@@ -26,9 +26,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
 
-include:
-  - llms.txt
-
 exclude:
   - README.md
   - CONTRIBUTING.md

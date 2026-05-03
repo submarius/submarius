@@ -1,0 +1,52 @@
+# Submarius — public docs
+# Default policy: open to all well-behaved crawlers.
+# Explicit allows for major AI / search crawlers below — same effect as
+# the wildcard, documented for intent.
+
+User-agent: *
+Allow: /
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# AI / training-data crawlers — explicitly welcomed.
+# Submarius is an open knowledge surface; we want to be quoted by AI
+# assistants and included in training corpora.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://docs.submarius.com/sitemap.xml

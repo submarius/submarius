@@ -1,0 +1,2680 @@
+# Submarius — Full Documentation (concatenated)
+
+> One-fetch concatenation of every public Submarius documentation page.
+> Intended for LLM ingestion. The canonical source is https://docs.submarius.com.
+> Last regenerated: 2026-05-03
+
+## Table of contents
+
+- [Submarius — public documentation](https://docs.submarius.com/index.html)
+- [Overview — what Submarius does](https://docs.submarius.com/overview.html)
+- [FAQ](https://docs.submarius.com/faq.html)
+- [Glossary](https://docs.submarius.com/glossary.html)
+- [Water clarity forecast](https://docs.submarius.com/features/water-clarity.html)
+- [Bite score](https://docs.submarius.com/features/bite-score.html)
+- [The GO/NO/CAUTION verdict](https://docs.submarius.com/features/verdict.html)
+- [Tides and currents](https://docs.submarius.com/features/tides-and-currents.html)
+- [Shark alerts](https://docs.submarius.com/features/shark-alerts.html)
+- [Safety features](https://docs.submarius.com/features/safety.html)
+- [Offline mode](https://docs.submarius.com/features/offline-mode.html)
+- [Privacy and spot protection](https://docs.submarius.com/features/privacy.html)
+- [Pro vs Free](https://docs.submarius.com/features/pro-vs-free.html)
+- [Water-clarity model — methodology](https://docs.submarius.com/methodology/water-clarity-model.html)
+- [Kd490 → Secchi — the optical theory](https://docs.submarius.com/methodology/kd490-explained.html)
+- [Bite-score signals](https://docs.submarius.com/methodology/bite-score-signals.html)
+- [Data sources and licences](https://docs.submarius.com/methodology/data-sources.html)
+- [Data-honesty principles](https://docs.submarius.com/methodology/data-honesty.html)
+- [iOS app](https://docs.submarius.com/platforms/ios.html)
+- [Web app](https://docs.submarius.com/platforms/web.html)
+- [Press kit](https://docs.submarius.com/press/press-kit.html)
+- [Press coverage](https://docs.submarius.com/press/coverage.html)
+
+
+---
+
+<!-- Source: https://docs.submarius.com/index.html -->
+
+# Submarius — public documentation
+
+Methodology, feature explainers, data-source citations, and FAQ for
+Submarius — the marine-conditions app that gives spearos, divers, anglers,
+and boaters one verdict per day instead of ten dashboards.
+
+## Start here
+
+- **[Overview](overview.md)** — what Submarius is, who it's for, every
+  feature mapped to its data source.
+- **[FAQ](faq.md)** — real questions, plainly answered.
+- **[Glossary](glossary.md)** — every acronym and term defined (Kd490,
+  Secchi, H3, Case-1/Case-2, CDOM, FNU, EnKF, NDFD, HRRR, …).
+
+## Features
+
+- [Water clarity forecast](features/water-clarity.md)
+- [Bite score](features/bite-score.md)
+- [The GO/NO verdict](features/verdict.md)
+- [Tides and currents](features/tides-and-currents.md)
+- [Shark alerts](features/shark-alerts.md)
+- [Safety features](features/safety.md) — permanently free
+- [Offline mode](features/offline-mode.md)
+- [Privacy and spot protection](features/privacy.md)
+- [Pro vs Free](features/pro-vs-free.md)
+
+## Methodology
+
+The deep technical material — what's actually under the hood.
+
+- [Water-clarity model](methodology/water-clarity-model.md)
+- [Kd490 → Secchi: the optical theory](methodology/kd490-explained.md)
+- [Bite-score signals](methodology/bite-score-signals.md)
+- [Data sources and licences](methodology/data-sources.md)
+- [Data-honesty principles](methodology/data-honesty.md)
+
+## Platforms
+
+- [iOS](platforms/ios.md)
+- [Web](platforms/web.md)
+
+## Press
+
+- [Press kit](press/press-kit.md) — logos, screenshots, founder bio,
+  boilerplate.
+- [Coverage log](press/coverage.md) — running list of media mentions.
+
+---
+
+This documentation is licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Quote, link,
+adapt; attribution to Submarius appreciated. Source on
+[GitHub](https://github.com/Submarius/submarius).
+
+---
+
+<!-- Source: https://docs.submarius.com/overview.html -->
+
+# Overview
+
+Submarius is a mobile-first ocean-conditions app for spearos, divers,
+anglers, and boaters. It aggregates marine forecasts, satellite ocean
+colour, river discharge, tide predictions, and harmful-algal-bloom
+bulletins, then layers a handful of custom intelligence products
+(water-clarity forecast, bite score, GO/NO verdict) on top.
+
+The product runs as a native iOS app and as a progressive web app at
+[submarius.com](https://submarius.com).
+
+This page is the index of *what* Submarius does. The
+[methodology section](methodology/) explains *how*.
+
+---
+
+## Ocean and weather conditions
+
+| Feature | Source |
+|---|---|
+| Wind, swell, wave forecast | Open-Meteo Marine, NOAA NDFD |
+| Short-range surface wind raster | NOAA HRRR |
+| Tides and currents | NOAA Tides & Currents |
+| Sea-surface temperature | NOAA CoastWatch, NASA GHRSST, Open-Meteo Marine |
+| Water clarity / visibility | NOAA CoastWatch (VIIRS, OLCI), GOES-16 ABI via [ACOLITE](https://github.com/acolite/acolite), NOAA HAB bulletins, USGS, post-dive reports |
+| Moon phase, sun times | Astronomical computation |
+| Activity-rated verdict | Submarius (see [The verdict](features/verdict.md)) |
+
+The clarity layer is the differentiating one. Most marine apps stop at
+the marine forecast and let you guess the visibility from wind history.
+Submarius forecasts visibility directly via fused satellite ocean colour
+combined with weather-driven penalties — the
+[methodology page](methodology/water-clarity-model.md) walks through
+every component.
+
+---
+
+## Maps, charts, and overlays
+
+| Feature | Source |
+|---|---|
+| Base vector tiles | Self-hosted MapLibre (OpenStreetMap + GEBCO + NOAA ENC) |
+| Bathymetry overlay | ESRI World Ocean Base |
+| Sea-surface temperature overlay | NASA GIBS GHRSST |
+| Animated precipitation radar | RainViewer |
+| Wind particles | NOAA HRRR |
+| Reefs and wrecks | OpenStreetMap + state datasets |
+| Nautical charts (US) | NOAA ENC |
+| MPAs and no-take zones | Protected Planet, NOAA MPA Inventory |
+| Maritime boundaries | Marine Regions |
+| Reverse geocoding | Public Nominatim |
+
+All third-party tiles are fetched server-side and cached, so the client
+never talks to upstream tile servers directly. This keeps the client
+fast on flaky boat wifi and keeps Submarius inside upstream rate limits.
+
+The base map is deliberately minimal — bathymetry, contours, channel
+markers — rather than a full street/POI render. Marine-chartplotter
+aesthetic, not Google Maps.
+
+---
+
+## Safety
+
+Permanently free, regardless of subscription tier. See
+[features/safety.md](features/safety.md) for the full breakdown and the
+rationale.
+
+| Feature | Source |
+|---|---|
+| Tagged shark tracking | OCEARCH |
+| Live shark sightings | Crowd-sourced |
+| Dive-buddy GPS sharing | Submarius (real-time WebSocket) |
+| Emergency SOS | Client-side, fan-out via push + SMS |
+| Precise rescue location | [Plus Codes](https://plus.codes/) |
+| Garmin inReach satellite SOS | Planned, requires partner integration |
+
+---
+
+## Fish intelligence
+
+| Feature | Source |
+|---|---|
+| Fish-ID by location | iNaturalist + OBIS + WoRMS |
+| Species biology | WoRMS |
+| Bite score | Submarius (see [features/bite-score.md](features/bite-score.md)) |
+| Size and limit checker | Per-jurisdiction regulations data |
+| Catch logging | Submarius |
+
+The bite score is computed from solunar timing, barometric pressure
+trend, recent fronts, tide stage, and water temperature versus species
+preference. Inputs are tappable for full reasoning; no black-box AI
+claims.
+
+---
+
+## Spot intelligence
+
+| Feature | Source |
+|---|---|
+| Crowd-sourced dive spots | Submarius, with privacy controls and GPS fuzzing |
+| Personal spot library | On-device, optional E2EE backup |
+| Spot privacy modes | Submarius |
+| Reefs, wrecks, structure | OSM and state datasets |
+
+Spots are private by default. When shared, locations are H3-quantised
+before they leave the device — Submarius itself can't recover precise
+coordinates. Optional end-to-end encrypted backup keeps spot data
+recoverable without exposing it server-side. See
+[features/privacy.md](features/privacy.md).
+
+---
+
+## Offline-first
+
+Every endpoint is designed to degrade gracefully when the network drops,
+because boat connectivity is what it is.
+
+- Offline base map (bathymetry-only) usable with no signal
+- Conditions cached on last successful fetch and shown with a freshness
+  indicator
+- Mutations (catch logs, viz reports, buddy positions) queued locally
+  and replayed on reconnect
+
+See [features/offline-mode.md](features/offline-mode.md).
+
+---
+
+<!-- Source: https://docs.submarius.com/faq.html -->
+
+# FAQ
+
+## The product
+
+### What is Submarius?
+
+A mobile-first ocean-conditions app for spearos, divers, anglers, and
+boaters. It aggregates marine forecasts, satellite ocean colour, river
+discharge, tides, and harmful-algal-bloom bulletins into a single GO /
+NO / CAUTION verdict per dive day, with every input visible. See
+[overview](overview.md).
+
+### Where can I get it?
+
+[App Store for iOS](https://apps.apple.com/app/submarius), or in any
+modern browser at [submarius.com](https://submarius.com) (installable
+as a PWA).
+
+### Is it free?
+
+The free tier includes today and tomorrow's forecast, current
+water-clarity estimate, current verdict, tides, all safety features
+(SOS, buddy-GPS, shark alerts), spot library with E2EE backup, catch
+logging, and the offline base map. Pro adds the 7-day forecast, all
+the overlay layers, multi-spot trip planning, push notifications, and
+higher upload quotas. Pricing is on
+[features/pro-vs-free.md](features/pro-vs-free.md).
+
+### What regions does it cover?
+
+Globally. The model uses ocean and weather inputs that have global
+coverage (Open-Meteo, GEBCO, OpenStreetMap coastlines, satellite
+ocean colour). Some signals are US-only (USGS river discharge, NOAA
+HAB Forecast, NOAA Tides & Currents native). Outside those, the
+relevant components are absent and the model runs without them — the
+uncertainty band widens accordingly.
+
+## Water clarity
+
+### How does the visibility forecast actually work?
+
+Three layers: a physical model anchored to satellite ocean colour
+(Lee 2015 Kd → Secchi with adaptive Case-1/Case-2 coefficient), with
+weather-driven penalties (rain, wind, tide, river plumes, HAB);
+crowd-sourced viz reports that pin recent estimates and calibrate the
+model over time; and a statistical refinement layer in regions with
+enough report density. Full detail at
+[methodology/water-clarity-model.md](methodology/water-clarity-model.md).
+
+### How accurate is it?
+
+The underlying Lee 2015 model achieves R² = 0.96 against 338 in-situ
+measurements globally. Submarius's specific implementation adds
+weather-driven penalties and adjustments — some of which improve
+accuracy, some of which trade absolute accuracy for honest uncertainty
+quantification.
+
+The honest answer is: it depends on the location and the recency of
+the data. Where satellite is fresh and reports are nearby, the
+estimate is tight. Where inputs are stale or reports absent, the
+uncertainty band is wide and the app says so.
+
+### Why does the band sometimes get really wide?
+
+Because the model is being honest about uncertainty. When satellite
+coverage is stale (multi-day cloud cover, sensor outage), the
+oceanographic anchor is weaker and the band reflects that. When
+weather inputs disagree with each other, the band reflects that too.
+Tight bands when sources agree, wide bands when they don't.
+
+### Why doesn't it work for [my favourite dive site]?
+
+If a site is hyperlocal — a specific cove, a specific reef on the back
+side of a specific island — the satellite resolution (2–4 km) can't
+distinguish it from the surrounding water. Reports help bridge that
+gap. The more reports a region accumulates, the better the model
+performs there.
+
+If the site is genuinely uncovered (inland, freshwater, beyond the
+forecast horizon), the app says so rather than guess.
+
+### What about Case-2 / coastal turbid water?
+
+Submarius computes a Case-1/Case-2 blend factor from coastline
+geometry, distance-to-coast, satellite chlorophyll, and active HAB
+flags. Most products use Case-1 everywhere and overestimate coastal
+turbidity by 30–50%. We don't. See
+[methodology/kd490-explained.md](methodology/kd490-explained.md).
+
+## Bite score
+
+### Is the bite score "AI"?
+
+No. It's a transparent composition of biological and environmental
+signals (solunar, barometric trend, fronts, tide, water temperature
+versus species preference, species presence, time of day, wind). Each
+contribution is visible. See
+[methodology/bite-score-signals.md](methodology/bite-score-signals.md).
+
+### Why is the bite score per-species?
+
+Because species differ. Redfish work the falling tide on flats,
+tarpon feed the incoming through inlets, snapper bite a different
+moon than mahi. A score that treats all fish the same is wrong half
+the time.
+
+## Safety features
+
+### SOS, buddy-GPS, and shark alerts are free? Forever?
+
+Yes. The entitlement middleware in our backend explicitly bypasses
+subscription checks for safety endpoints. Permanent product policy.
+See [features/safety.md](features/safety.md).
+
+### What about Garmin inReach?
+
+Hand-off to inReach satellite SOS for off-grid scenarios is planned
+but not shipped. Requires a Garmin partner integration.
+
+## Privacy
+
+### Are my dive spots private?
+
+By default, yes — completely private to your device. When you choose
+to share, you pick the privacy level (buddy-only, public-fuzzed at
+~5 km cell resolution, or public-exact for the rare "share my spot
+with the world" case).
+
+### Can Submarius see my exact dive spots?
+
+If they're private or buddy-shared: no, they're on your device only
+(or sent encrypted to your buddy). If they're public-fuzzed: no, only
+the H3 cell is sent — never the precise coordinates. The fuzzing
+happens on-device before the data leaves. Even with a court order,
+Submarius can't recover the precise points of fuzzed spots. See
+[features/privacy.md](features/privacy.md).
+
+### Does the app track me in the background?
+
+No, except during an active buddy-GPS session (when you've explicitly
+paired with a buddy). Outside of that, location is "While Using"
+only.
+
+### Do you sell my data?
+
+No. We don't sell data, share with advertisers, or run ad SDKs. The
+business model is the Pro subscription.
+
+## Technical
+
+### Do you have a public API?
+
+Yes — `api.submarius.com`. The API is documented and available for
+non-commercial use. Commercial integrations (B2B partners, research
+collaborations, white-label) are case-by-case. Get in touch via the
+contact link on [submarius.com](https://submarius.com).
+
+### Is Submarius open source?
+
+The documentation, methodology, FAQ, and brand assets in this
+repository are open-licensed (CC BY 4.0). The application source code
+is not open source.
+
+### Why is the source closed?
+
+Two reasons. First, the model is the work that funds the company —
+publishing the calibration tuning would let competitors clone the
+product without doing the underlying calibration work. Second, the
+infrastructure (data ingest pipelines, caching, ACOLITE processing,
+etc.) is operationally non-trivial and we'd rather not maintain it as
+a public-facing project on top of running it for users.
+
+The methodology is open. The art is in the calibration.
+
+### Can I run my own instance?
+
+No, sorry. Submarius runs as a hosted service.
+
+### Why is there no Android app yet?
+
+Capability rather than priority. The web app at submarius.com works
+on Android and is installable as a PWA, which covers the main use
+cases. A native Android build is plausible future work, not committed.
+
+## Business
+
+### Is Submarius a venture-backed startup?
+
+Submarius is independent. We're not seeking outside investment at
+this time.
+
+### How do I contact you?
+
+Use the contact link on [submarius.com](https://submarius.com).
+Security disclosures via [SECURITY.md](../SECURITY.md). General
+discussion at
+[Discussions](https://github.com/Submarius/submarius/discussions).
+Bugs via the [bug template](https://github.com/Submarius/submarius/issues/new?template=bug.yml).
+
+### Are you hiring?
+
+When we are, it'll be on the website. Not currently.
+
+---
+
+<!-- Source: https://docs.submarius.com/glossary.html -->
+
+# Glossary
+
+Plain definitions for the terms that show up in the Submarius docs and
+API responses. If something here is wrong or unclear, please open a
+[methodology question](https://github.com/Submarius/submarius/issues/new?template=methodology-question.yml).
+
+## A
+
+**ABI** — Advanced Baseline Imager. The instrument on NOAA's GOES-16
+satellite that takes the visible/infrared imagery Submarius processes
+into hourly water-colour data.
+
+**ACOLITE** — An open-source atmospheric-correction processor for
+satellite imagery, originally developed for Sentinel-2 and Landsat,
+extended to GOES. Submarius uses it to extract ocean-colour signal
+from raw GOES-16 ABI L1b radiance. https://github.com/acolite/acolite
+
+**Adjacency effect** — In satellite ocean colour, the bias caused by
+land or shallow-bottom reflectance bleeding into the signal of an
+adjacent water pixel. Pushes apparent clarity *higher* than reality.
+Submarius downweights affected pixels.
+
+**AOT** — Aerosol Optical Thickness. Measured by satellite to
+distinguish atmospheric haze from water-leaving radiance.
+
+## B
+
+**Bathymetry** — The underwater equivalent of topography: depth of the
+seafloor as a function of position. Submarius uses GEBCO bathymetry to
+cap visibility estimates (you can't see past the bottom).
+
+**Bite score** — Submarius's 0–10 fish-activity index for a target
+species at a location and time. See
+[features/bite-score.md](features/bite-score.md).
+
+## C
+
+**Case-1 / Case-2** — An oceanographic classification of water type.
+Case-1 is open ocean dominated by phytoplankton; Case-2 is coastal
+water dominated by suspended sediment, CDOM, and river-borne material.
+The Lee 2015 Kd→Secchi coefficient differs between them. See
+[methodology/kd490-explained.md](methodology/kd490-explained.md).
+
+**CDOM** — Coloured Dissolved Organic Matter. Tannin-like dissolved
+organics that absorb blue light and tint water yellow-brown. Common in
+river-influenced coasts, mangrove systems, and tannic regions like
+the Carolinas and northern Australia.
+
+**Chlorophyll-a** — Pigment in phytoplankton; satellite-measurable
+proxy for phytoplankton biomass. Used by Submarius for water-type
+classification (high chlorophyll → bloom-influenced → leans Case-2).
+
+**CoastWatch** — NOAA's satellite ocean-colour and SST data programme.
+Distributes the VIIRS-SNPP and multi-mission DINEOF products
+Submarius consumes.
+
+## D
+
+**DINEOF** — Data Interpolating Empirical Orthogonal Functions. A
+gap-filling technique used by NOAA to produce continuous Kd490 fields
+from cloud-affected daily satellite data.
+
+**Diver-relevance horizon** — Submarius caps clarity output at 122 m
+(400 ft) because most divers don't go past that depth. Beyond it,
+visibility numbers are operationally meaningless.
+
+## E
+
+**Edge Network** — Reverse-proxy CDN edge. Submarius doesn't currently
+use one; mentioned occasionally in the docs context.
+
+**EnKF** — Ensemble Kalman Filter. A state-estimation technique for
+combining noisy time-series observations with a forward physical
+model. Submarius's clarity model uses point-estimate fusion today;
+EnKF integration is planned.
+
+**ERDDAP** — Environmental Research Division Data Access Protocol. A
+NOAA data-server framework that exposes scientific data via uniform
+HTTP endpoints. Submarius pulls satellite Kd490 from CoastWatch's
+ERDDAP instance.
+
+## F
+
+**FNU** — Formazin Nephelometric Unit. A standard turbidity unit. USGS
+publishes river turbidity in FNU; we don't currently use it directly
+in the clarity model but it's available as an input signal.
+
+**Front (cold front)** — A weather-system boundary; passage typically
+suppresses fish activity for 6–24 h, then often produces a 24–36 h
+rebound.
+
+## G
+
+**GEBCO** — General Bathymetric Chart of the Oceans. Free global
+bathymetric grid used by Submarius for the depth cap and the
+bathymetry overlay.
+
+**GHRSST** — Group for High Resolution Sea Surface Temperature. A
+NASA/NOAA-coordinated SST data product used by Submarius for the SST
+overlay.
+
+**GIBS** — Global Imagery Browse Services. NASA's tile-server for
+public satellite imagery; Submarius consumes the GHRSST tiles via
+GIBS.
+
+**GOES-16** — Geostationary Operational Environmental Satellite. A
+NOAA weather satellite parked over the Americas. Its ABI instrument
+provides the hourly imagery Submarius processes for sub-daily ocean
+colour.
+
+## H
+
+**H3** — Uber's open-source hexagonal hierarchical spatial indexing
+system. Submarius uses H3 cells to (a) cache spatial data efficiently
+and (b) fuzz user spot locations for privacy. https://h3geo.org/
+
+**HAB** — Harmful Algal Bloom. Submarius integrates NOAA's Gulf Coast
+HAB Forecast for active-bloom severity, which both penalises the
+clarity estimate and surfaces a user-visible warning.
+
+**HRRR** — High-Resolution Rapid Refresh. A NOAA 3 km surface weather
+model used by Submarius for the wind-particle overlay (Pro feature).
+
+## I
+
+**Inverse-variance weighting** — The maximum-likelihood combination of
+independent observations with known variances. The mathematical
+backbone of Submarius's multi-satellite Kd490 fusion.
+
+**IndexedDB** — Browser-native client-side database used by Submarius
+for offline tile storage, conditions caching, and the mutation queue.
+
+## K
+
+**Kd490** — Diffuse attenuation coefficient at 490 nanometres. Measured
+by satellites; converts to Secchi depth via the Lee 2015 model. See
+[methodology/kd490-explained.md](methodology/kd490-explained.md).
+
+## L
+
+**L1b / L2 / L3** — Standard NASA/NOAA satellite-data processing
+levels. L1b = calibrated radiance; L2 = derived geophysical products
+at the original sensor resolution; L3 = gridded, time-averaged
+products.
+
+**Lee 2015** — The published mechanistic model for Kd → Secchi that
+underlies Submarius's clarity computation. Lee, Z. P. et al. (2015),
+*Remote Sensing of Environment* 169, 139–149. R² = 0.96 against 338
+in-situ measurements.
+
+## M
+
+**MapLibre** — Open-source vector-map renderer used by Submarius. Fork
+of Mapbox GL JS.
+
+**MPA** — Marine Protected Area. Submarius surfaces MPA boundaries
+from Protected Planet and the NOAA MPA Inventory.
+
+## N
+
+**NDFD** — National Digital Forecast Database. NOAA's authoritative
+gridded weather forecast.
+
+**NDBC** — National Data Buoy Center. Real-time observational data
+from offshore buoys; Submarius consumes select NDBC stations for
+ground-truthing.
+
+**NODD** — NOAA Open Data Dissemination programme. Distributes raw
+satellite L1b on AWS S3 (e.g. the GOES-16 ABI bucket Submarius
+processes).
+
+## O
+
+**OBIS** — Ocean Biodiversity Information System. Authoritative species
+occurrence records used by Submarius for seasonal range modelling.
+
+**OCEARCH** — Long-running shark-tracking research organisation;
+publishes the tagged-shark position feed Submarius surfaces in the
+shark-alerts feature.
+
+**OLCI** — Ocean and Land Colour Instrument on the Sentinel-3
+satellites. Component of the multi-mission DINEOF Kd490 product.
+
+## P
+
+**Plus Code** — Open Location Code. A short alphanumeric code that
+uniquely identifies any 14×14 m square on Earth. Submarius surfaces
+Plus Codes alongside lat/lon for SOS and shared spots.
+https://plus.codes/
+
+**PWA** — Progressive Web App. A web app installable like a native
+app, with offline support and push notifications.
+
+## R
+
+**Resuspension** — Wind-driven re-mobilisation of bottom sediment
+into the water column. Major contributor to nearshore turbidity.
+Modelled in Submarius via the W²/H scaling from Green & Coco (2014).
+
+## S
+
+**Secchi disk / Secchi depth (Z_SD)** — A 30 cm white disk lowered
+into water until it disappears from view. The depth at which it
+disappears is the Secchi depth. The classical standard for water
+clarity, and the unit Submarius reports.
+
+**SNPP** — Suomi National Polar-orbiting Partnership. The satellite
+carrying VIIRS, the primary daily ocean-colour sensor for Submarius.
+
+**Solunar** — Theory that fish activity peaks during specific lunar
+position windows (moon overhead, moon underfoot, moonrise, moonset).
+A component of the bite score; not load-bearing on its own.
+
+**SST** — Sea Surface Temperature. Used by Submarius across the
+clarity model, the bite-score, and as a map overlay.
+
+## V
+
+**Verdict** — Submarius's per-day GO / NO / CAUTION output for the
+chosen activity at the chosen location. See
+[features/verdict.md](features/verdict.md).
+
+**VIIRS** — Visible Infrared Imaging Radiometer Suite. The instrument
+on Suomi NPP and JPSS satellites that produces the daily ocean-colour
+data Submarius's clarity model is anchored to.
+
+**Viz / Visibility** — Underwater visibility, in metres or feet.
+Approximated by Secchi depth.
+
+## W
+
+**WoRMS** — World Register of Marine Species. Authoritative marine
+taxonomy and biology database; cached in Submarius for species data.
+
+**W²/H** — Wind speed squared over water depth. The empirical scaling
+parameter for wave-driven sediment resuspension in shallow water.
+
+## Z
+
+**Z_SD** — Secchi disk depth. See *Secchi*.
+
+---
+
+<!-- Source: https://docs.submarius.com/features/water-clarity.html -->
+
+# Water clarity forecast
+
+The single most important question for a spearo or freediver is: *"will
+the water be clear?"* Submarius answers it directly.
+
+This page describes the **feature** — what you see and what it does. The
+underlying mathematics is in
+[methodology/water-clarity-model.md](../methodology/water-clarity-model.md).
+
+## What you get
+
+For any coastal point on Earth and any hour of the next seven days,
+Submarius returns:
+
+- A **median visibility estimate** in metres (or feet, by preference)
+- An **uncertainty band** (p10 / p50 / p90 quantiles)
+- The **best window** in the coming week — the hour or hour-range with
+  the highest expected visibility
+- A list of **contributing factors** with each one's pull on the number:
+  satellite, baseline, recent rain, wind history, tide stage, HAB
+  bulletin, river plume, post-dive reports
+
+If the model can't speak confidently about a location (e.g. a fully
+inland pond, no satellite coverage in the last 14 days, or a region with
+no oceanographic baseline), the app says so explicitly. We don't
+fabricate.
+
+## What makes it different
+
+Three things, none of which any other consumer app does:
+
+1. **Multi-sensor fusion.** Submarius blends three independent satellite
+   ocean-colour sources (VIIRS-SNPP, NOAA's VIIRS+OLCI multi-mission
+   gap-filled product, and GOES-16 ABI processed hourly via ACOLITE)
+   using inverse-variance weighting in log-Kd space. When the sources
+   agree, the uncertainty band tightens. When one is cloud-locked, the
+   others carry the estimate.
+2. **Honest uncertainty bands.** The width of the band reflects how
+   confidently the model can speak — narrow when satellite is fresh and
+   reports are nearby, wide when the inputs are stale. A 10 m estimate
+   with a 9–11 m band means something different from a 10 m estimate
+   with a 4–18 m band, and the app shows both.
+3. **Physical penalties layered on the satellite signal.** Recent rain,
+   wind history over shallow bottoms, river-discharge plumes, tide
+   stage, and active HAB warnings all pull the estimate down with their
+   own confidence levels. Each is visible in the breakdown.
+
+## Sources of input
+
+| Signal | Provider | Notes |
+|---|---|---|
+| Diffuse attenuation Kd490 | NOAA CoastWatch (VIIRS-SNPP, multi-mission DINEOF) | Daily L3 product, 1–3 day latency |
+| Geostationary ocean colour | NOAA NODD (GOES-16 ABI L1b) → ACOLITE | Hourly daylight, sub-30 s from publish |
+| Chlorophyll-a | NOAA CoastWatch | Used for water-type classification |
+| Wind history | Open-Meteo, NOAA HRRR | 24/72/168 h aggregates |
+| Precipitation history | Open-Meteo Historical | 24/48/72 h cumulative |
+| River discharge | USGS Water Services (US) | 15-minute readings, 50 km radius |
+| Bathymetry | GEBCO | For the depth cap |
+| HAB bulletins | NOAA Gulf Coast HAB Forecast | Severity-weighted penalty |
+| Post-dive reports | Submarius (crowd-sourced) | H3-fuzzed for privacy |
+
+## Diver-relevance horizon
+
+Submarius caps the visibility output at **122 m (400 ft)** even when the
+satellite suggests it could physically be higher. Most divers don't go
+past that depth, so any number above it is operationally meaningless.
+Pelagic readings up to that horizon remain uncapped — the Gulf Stream
+genuinely does deliver 30 m+ visibility and we report it.
+
+## Bathymetric cap
+
+Visibility cannot exceed roughly `bottom_depth × 1.5` when the seafloor
+is shallower than the diver-relevance horizon. A four-metre coastal
+bottom with crystal-clear satellite Kd will still cap at six metres of
+useful visibility because the bottom reflects light back through the
+water column and you can't see *through* the seafloor.
+
+## Reports flywheel
+
+Every dive trip in Submarius can end with a one-tap viz rating. Reports
+are H3-quantised before they leave the device (we never store precise
+coordinates) and feed back into the model two ways:
+
+- **Pinning recent estimates** — a report less than 24 h old within
+  ~5 km of a query directly weights the local estimate.
+- **Calibrating the baseline** — accumulated reports refine the regional
+  coefficients. The more reports a region has, the tighter the model
+  becomes there.
+
+The model ships good on day one (it's grounded in published oceanography
+before any user has ever opened the app), then gets sharper with use.
+
+---
+
+<!-- Source: https://docs.submarius.com/features/bite-score.html -->
+
+# Bite score
+
+A 0–10 number indicating how active fish are likely to be at a given
+location and time. Tappable to see exactly which signals contributed and
+by how much. No black-box "AI" claims — every component is published.
+
+## What's wrong with most bite scores
+
+Most fishing apps surface a "bite quality" number whose source is
+opaque. It correlates loosely with solunar tables and doesn't react to
+weather fronts, recent rain, or species presence. The user has no way to
+know whether the number reflects genuine biological activity or a
+random-feeling marketing veneer.
+
+Submarius makes the inputs visible. If the score is high because the
+moon is overhead and the tide is rising and a high-pressure system is
+parked over the area for 36 h, you can see all three. If it's low
+because a cold front rolled through 18 h ago and the species you targeted
+prefers warmer water than is currently present, you see that too.
+
+## Inputs
+
+| Signal | What it measures | Weight role |
+|---|---|---|
+| **Solunar phase** | Major and minor periods (moon overhead/underfoot, moonrise/set) | Primary timing signal |
+| **Barometric trend** | 24-hour pressure change | Falling pressure ahead of a front spikes activity; stable high-pressure suppresses it |
+| **Recent fronts** | Cold-front passage in last 48 h | Post-front lull, then 6–24 h rebound |
+| **Tide stage** | Rising / falling / slack, and rate of change | Most species feed actively on moving water |
+| **Water temperature** | Sea-surface temperature versus species preference range | Warm-water fish dial down in cold water and vice versa |
+| **Species presence** | Seasonal range overlap from OBIS / iNaturalist | If the target species isn't likely to be present, the score reflects that |
+| **Time of day** | Dawn/dusk windows | Most predatory species are crepuscular |
+| **Wind and wave** | From marine forecast | Heavy chop suppresses activity for many species |
+
+## Per-species, not generic
+
+The score is computed against a target species (or species category) —
+"redfish in the flats", "yellowtail snapper offshore", "tuna pelagic" —
+rather than a generic "fish". Temperature preference, tide preference,
+and time-of-day pattern all differ. A score that ignores species is a
+score that's wrong half the time.
+
+## What it's *not*
+
+- **Not a guarantee.** Fish are wild animals; a 9/10 score doesn't mean
+  you'll catch one.
+- **Not a substitute for local knowledge.** A captain who knows the spot
+  beats any model. The score is an input to your decision, not a
+  replacement for it.
+- **Not "AI predictions" in the buzzword sense.** It's a transparent
+  composition of well-understood biological and environmental signals.
+
+## Explainability
+
+Tap the score to expand the breakdown. Every contributing signal shows:
+
+- Its current value (e.g. *"barometric pressure: 1018 hPa, falling
+  4 hPa in last 24 h"*)
+- Its pull on the score (e.g. *"+0.8 — falling pressure ahead of a
+  weather change"*)
+- A short reason in plain English
+
+If you disagree with a weighting, the underlying logic is documented in
+[methodology/bite-score-signals.md](../methodology/bite-score-signals.md)
+and we welcome discussion via
+[methodology questions](https://github.com/Submarius/submarius/issues/new?template=methodology-question.yml).
+
+---
+
+<!-- Source: https://docs.submarius.com/features/verdict.html -->
+
+# The verdict
+
+Most marine apps hand you ten dashboards. Submarius runs the integration
+step itself and gives you one of three outputs per dive day:
+
+- **GO** — conditions favourable for the activity at the chosen
+  location and time
+- **CAUTION** — conditions workable but with notable risks or
+  uncertainty; the breakdown explains what to watch
+- **NO** — conditions unsuitable; the breakdown explains why
+
+This is the verdict-first product philosophy:
+*[a verdict, not a dashboard](https://submarius.com/blog/a-verdict-not-a-dashboard)*.
+
+## How it's computed
+
+The verdict is **activity-aware**. The same conditions can be GO for
+fishing and NO for spearfishing, because the activities care about
+different signals:
+
+| Activity | Dominant signals |
+|---|---|
+| Spearfishing / freediving | Water clarity, current, swell direction, surface chop, water temperature |
+| Scuba diving | Surface conditions for entry/exit, current, water temperature, swell penetration vs site depth |
+| Fishing (boat) | Wind, wave height, fronts, tide stage, bite-score window |
+| Fishing (shore / wading) | Wind, surf, tide stage |
+| Boating | Wind, wave height, fog, fronts, lightning risk |
+
+For each activity, Submarius computes a per-signal traffic-light state
+(green / yellow / red) and combines them into the overall verdict using
+hand-tuned activity-specific rules — *not* a single weighted-sum score
+that treats a 30-knot wind the same as a missing tide table.
+
+## Why one verdict instead of ten numbers
+
+Two reasons:
+
+1. **Decision quality.** When the user has to integrate ten numbers
+   themselves, they integrate inconsistently and slowly, and they pick
+   up on whichever number happens to be most salient that morning. A
+   pre-integrated verdict is what an experienced captain would tell you
+   if you called them.
+2. **Accountability.** A model that just shows ten numbers is never
+   wrong. A model that says "GO" and then delivers two-foot visibility
+   is wrong, and we can measure how often it's wrong, calibrate against
+   reports, and improve. Saying nothing is the easy way out.
+
+## When the verdict is suppressed
+
+- **Inland points.** Submarius is a coastal product; we don't compute
+  verdicts for points far from any coastline.
+- **Insufficient data.** If the satellite coverage is too stale, the
+  forecast horizon too far out, or the location lacks a regional
+  baseline, the app surfaces *"insufficient data"* rather than guess.
+  Per the data-honesty principle: never claim what we don't measure.
+- **Active hazards.** Lightning risk above threshold, hurricane warning
+  in effect, harmful-algal-bloom severity above 2 — these short-circuit
+  to NO regardless of the rest of the forecast.
+
+## Drilling in
+
+Tap the verdict to see the per-signal breakdown. Tap any signal to see
+the source data and the model's reasoning. Nothing is hidden; every
+factor is reachable in three taps.
+
+---
+
+<!-- Source: https://docs.submarius.com/features/tides-and-currents.html -->
+
+# Tides and currents
+
+Tide and current data drives a lot of what Submarius does — the verdict,
+the bite-score, the water-clarity penalties — but it's also surfaced
+directly as a feature so you can plan around it.
+
+## What's shown
+
+For any coastal location:
+
+- **High and low tide times** for the next seven days
+- **Tide range** (height between consecutive high and low)
+- **Current rising / falling / slack** state at any selected hour
+- **Spring vs neap** indicator (within ±3 days of new/full moon)
+- **Hourly water-level graph** with the times of all the day's slack
+  windows highlighted
+
+Currents are shown where NOAA publishes prediction data (US coastal,
+including Alaska and Hawaii). Outside that coverage we display tides
+only.
+
+## Source
+
+- **Tide predictions** — [NOAA Tides & Currents](https://tidesandcurrents.noaa.gov/),
+  via the predictions API. NOAA's harmonic-analysis model is the gold
+  standard and we use it directly.
+- **Currents predictions** — same provider, where available.
+- **Sea-level observations** (where stations exist) for the live
+  comparison.
+
+For non-US locations, we fall back to global tidal modelling from
+Open-Meteo Marine.
+
+## Why this matters for the verdict
+
+Tide stage feeds three other features:
+
+1. **Water-clarity model.** Falling tide in an enclosed bay flushes
+   sediment-laden water out; rising tide brings cleaner offshore water
+   in. The clarity penalty for tide stage depends on the coastline
+   geometry classification (open / semi-open / enclosed) of the
+   location.
+2. **Bite score.** Most species feed actively on moving water; activity
+   drops near slack.
+3. **Diving access.** At many sites, slack is the only safe time to
+   enter the water — strong currents during peak flow can be dangerous
+   for shore divers.
+
+The verdict integrates these without forcing you to read the tide chart
+yourself, but the chart is one tap away.
+
+## Spring tides
+
+Spring tides (within a few days of new and full moon) produce the
+largest tidal range and the strongest currents. For some activities
+that's good (more bait movement, hungry predators); for others it's bad
+(too much current, too much sediment churn). The app indicates spring
+state and the verdict adjusts accordingly per activity.
+
+---
+
+<!-- Source: https://docs.submarius.com/features/shark-alerts.html -->
+
+# Shark alerts
+
+A safety feature, permanently free. Two complementary signals:
+
+1. **Tagged-shark proximity** from [OCEARCH](https://www.ocearch.org/),
+   the long-running shark-tracking research organisation.
+2. **Crowd-sourced sightings** posted by users in the app, time-bounded
+   and verified.
+
+## OCEARCH tracking
+
+OCEARCH publishes positions for hundreds of acoustically- and
+satellite-tagged sharks (white sharks, tiger sharks, bull sharks, mako,
+hammerheads). Each tagged animal has a name, a tagging date, a length,
+and a near-real-time position trail.
+
+Submarius pulls the OCEARCH feed and shows:
+
+- Tagged sharks within a configurable radius of the user
+- Each shark's species, name, length, and last-ping time
+- The full historical track for any selected animal
+- Push notifications when a tagged shark transmits a position within
+  range (configurable)
+
+Caveats we surface to the user, because honesty about what the data
+*is*:
+
+- Tagged sharks are a tiny fraction of total population. *Absence* of a
+  tagged shark in the area means nothing about the absence of untagged
+  ones.
+- Acoustic tags only ping when the animal surfaces; gaps of hours to
+  days are normal. A "last seen 6 hours ago" position is the *known*
+  position, not the *current* one.
+- The species mix in OCEARCH's tagged population skews toward the species
+  they study — large pelagic sharks. Smaller coastal species are
+  under-represented.
+
+## Crowd-sourced sightings
+
+Users can post a sighting from the app: species (or "unknown shark"),
+estimated length, behaviour, photo. Sightings carry a time-decay weight
+and are deduplicated by H3 cell — multiple users seeing the same animal
+in the same cell within minutes are aggregated.
+
+Like Waze for sharks: the more users in an area, the more accurate the
+data.
+
+## Permanently free
+
+Shark alerts (both OCEARCH and crowd-sourced) are part of the free
+safety tier and are not gated by Pro subscription. Per the
+[data-honesty principles](../methodology/data-honesty.md), safety
+features must be available to every user regardless of payment.
+
+---
+
+<!-- Source: https://docs.submarius.com/features/safety.html -->
+
+# Safety features
+
+Submarius treats safety features as ethically off-limits to the
+subscription business model. They are permanently free — not "free
+trial", not "free-tier with limits", not "free for one feature, paid
+for the rest". Free.
+
+## The features
+
+### SOS
+
+Press-and-hold the SOS button to fire an emergency signal. Submarius:
+
+1. Captures your current GPS position (with horizontal accuracy)
+2. Computes a [Plus Code](https://plus.codes/) for the position — an
+   open-standard, short, human-readable rescue location that works
+   without street addresses
+3. Sends a message to your designated emergency contacts via push
+   notification (if they have the app), SMS (fallback), and email
+4. Optionally fans out to the local Coast Guard / lifesaving service
+   (where a published intake exists)
+
+The rescue message includes your name, position, Plus Code, time of
+SOS, and (if known) your dive activity, last buddy position, and
+duration submerged.
+
+### Dive-buddy GPS sharing
+
+Two divers can pair their phones for a single trip. While paired, each
+phone broadcasts its position to the other every 30 seconds via a
+real-time WebSocket. The pairing ends when either diver ends the trip
+or 12 hours pass, whichever comes first.
+
+If a dive overruns expected duration, the surface buddy is alerted with
+the last-known position. If a phone goes offline, the other side sees
+the gap and the time of last contact.
+
+### Plus Code rescue location
+
+Plus Codes (Open Location Code) are a Google-developed, open-source,
+short alphanumeric code that uniquely identifies any 14×14 m square on
+Earth. They're more compact than lat/lon, easier to transcribe than
+DMS coordinates, and don't require a street address.
+
+Every Submarius position output (SOS, shared spots, catch logs) shows
+the Plus Code alongside the conventional coordinates. Coast Guard
+operators can decode them with publicly available tools.
+
+### Tagged-shark and crowd-sourced shark proximity
+
+Covered separately in [shark-alerts.md](shark-alerts.md). Free, free,
+free.
+
+### Garmin inReach satellite SOS (planned)
+
+For users with a Garmin inReach satellite communicator, Submarius will
+hand off the SOS to inReach for satellite delivery when cellular
+coverage is unavailable. This requires a Garmin partner integration and
+is on the roadmap, not yet shipped.
+
+## Why these are permanently free
+
+Three reasons:
+
+1. **They might save someone's life.** That's not a feature to gate
+   behind a $99/year subscription.
+2. **Network effects.** Buddy-GPS and crowd-sourced shark sightings get
+   better the more users participate. A paywall on participation
+   defeats the value.
+3. **Trust.** The brand promise of Submarius is that the app is honest
+   about what it knows and what it doesn't. Charging for an SOS button
+   would be inconsistent with that promise.
+
+The relevant entitlement middleware in the Submarius backend
+explicitly bypasses subscription checks for safety endpoints. This is
+permanent product policy, not a marketing free-trial period.
+
+## What safety features *can't* do
+
+Plain about the limits:
+
+- Submarius is not a replacement for professional dive training, an
+  experienced surface buddy, or proper equipment.
+- Cellular/wifi coverage is required for SOS and buddy-GPS; satellite
+  hand-off via Garmin is the planned mitigation but isn't shipped.
+- The OCEARCH tagged-shark feed reflects only tagged animals; absence
+  isn't presence-of-nothing.
+- Plus Codes don't replace the human Coast Guard infrastructure — they
+  make it faster.
+
+---
+
+<!-- Source: https://docs.submarius.com/features/offline-mode.html -->
+
+# Offline mode
+
+Boats lose signal. Submarius is designed for that — every endpoint
+degrades gracefully and the most-used features keep working with no
+connectivity.
+
+## Offline base map
+
+Submarius downloads a bathymetry-only vector tile pack for any region
+you mark as "offline area" before you leave the dock. The pack
+includes:
+
+- Bathymetric contours and depth-shaded raster
+- Coastline and shoreline detail
+- Channel markers and navigational aids (where in OSM)
+- Reefs, wrecks, and structure
+- Marine protected areas
+
+Deliberately *not* included: street-level OSM POI render. The marine
+chartplotter aesthetic is intentional — when you're a mile offshore,
+seeing every restaurant in the nearest harbour is noise.
+
+Tiles are stored in Dexie (IndexedDB) on the client and persist between
+app launches. There's no separate "download for offline" flow per
+trip — once a region is marked offline, it stays available.
+
+## Cached conditions
+
+The last successful fetch of conditions (forecast, tide, clarity,
+verdict) for any location you've viewed is cached on-device with a
+freshness timestamp. When offline, the app shows the cached value with
+a clear *"last updated 4 hours ago"* indicator.
+
+Critical: the verdict is *recomputed* on-device from the cached inputs,
+not just shown statically. So if the cached forecast says wind has
+dropped from 25 to 8 knots over the next six hours, and you scroll
+through the day, the verdict updates as if you were online.
+
+## Mutations queued for sync
+
+Anything you do that would change server state is queued locally and
+replayed when connectivity returns:
+
+- Catch logs
+- Post-dive viz reports
+- Shark sightings
+- Spot edits
+- Buddy-GPS position broadcasts
+
+The queue lives in Dexie (`syncQueue`) and is processed FIFO on the
+next successful network round-trip. Conflicts (e.g. you edited a spot
+offline that your buddy also edited) are resolved last-write-wins for
+simple fields and merged for collections.
+
+## What requires connectivity
+
+Plain about what doesn't work offline:
+
+- **SOS**. Cellular or wifi is required to deliver the emergency
+  message. Garmin inReach hand-off (planned) is the mitigation.
+- **Live buddy-GPS**. Both ends need network for the WebSocket.
+- **Live shark sightings**. Crowd-sourced data needs the round-trip.
+- **First-time view of a new location.** If you've never viewed
+  conditions for a spot, there's nothing cached to show.
+- **Live tile updates** (radar, SST, GHRSST overlay). The base map
+  works; the live overlays don't.
+
+## Why this matters
+
+Boat connectivity is unreliable in the geographies Submarius is most
+useful in. A nearshore-only app that fails the moment you cross the
+inlet is a bad app. The offline-first architecture is one of the
+project's foundational design principles, not a polish item.
+
+---
+
+<!-- Source: https://docs.submarius.com/features/privacy.html -->
+
+# Privacy and spot protection
+
+Spearos and divers do not casually share spot coordinates. Submarius
+treats that with appropriate paranoia.
+
+## Spot privacy modes
+
+Every spot in the app has a visibility setting:
+
+| Mode | Who sees the precise coordinates |
+|---|---|
+| **Private** (default) | Only you, on your device |
+| **Buddy** | You and divers you've explicitly paired with |
+| **Public, fuzzed** | Visible on the discover map at H3 cell resolution (≈ 1 km) — never the precise point |
+| **Public, exact** | Anyone who can see the spot (rare; opt-in) |
+
+The default is private. There is no opt-out from privacy by accident —
+making a spot public is a deliberate action.
+
+## H3-fuzzed coordinates everywhere
+
+When a spot or a dive event is shared (with a buddy, with the public
+discover map, with a viz report), the coordinates are quantised to an
+H3 cell on the device, before the data is sent to Submarius.
+
+The implication: **even with full database access (or a court order),
+Submarius itself cannot recover the precise coordinates of a fuzzed
+spot.** This is enforceable engineering, not a policy promise.
+
+H3 resolution levels used:
+
+- **Discover map**: H3 resolution 7 (~5 km cell)
+- **Viz reports for the clarity model**: H3 resolution 9 (~150 m cell)
+- **Buddy-GPS sharing during an active trip**: precise coordinates,
+  buddy-only, ephemeral (not persisted server-side)
+
+## End-to-end encrypted backup
+
+Optional. When enabled, your spot library, catch log, and dive history
+are encrypted on the device with a key derived from your account
+passphrase, then uploaded to Submarius for backup. Submarius servers
+hold ciphertext; the key never leaves your device.
+
+Recovery: your passphrase decrypts the backup on a new device. Lose the
+passphrase, lose the backup — Submarius cannot recover it for you. (We
+also can't be compelled to.)
+
+Implementation summary:
+- Symmetric key derived via Argon2id from the passphrase plus a
+  per-account salt
+- AES-GCM-256 encryption of the spot/catch payload
+- Per-record nonces; nonce reuse impossible
+- Key rotation supported via re-wrap on passphrase change
+
+The crypto is locked — no plans to change algorithms or parameters
+without a hard-coded version bump and explicit user consent.
+
+## What we collect
+
+The minimum viable set:
+
+- **Account**: email (for login and recovery), display name (optional),
+  passkey or passphrase
+- **Subscription state**: tier, billing identifier from Apple
+- **Usage**: anonymised analytics on which features are used, no
+  per-user tracking
+- **Spots and catch logs**: only what you've created, with the privacy
+  level you chose
+- **Crash reports**: stack traces, no PII
+
+We do not sell data. We do not share with advertisers. We do not have
+ad SDKs in the app.
+
+## What we don't collect
+
+- No precise location history beyond what's needed for an active
+  buddy-GPS session (which is ephemeral)
+- No contact list scraping
+- No social-graph correlation across users
+- No background location when the app isn't actively in use
+
+## GDPR / CCPA
+
+Right of access, right of deletion, right of portability — supported.
+Email the privacy team via the contact link on
+[submarius.com](https://submarius.com).
+
+## Source
+
+The privacy posture above is implemented in the app and backend; it
+isn't a wish list. The user-facing copy at
+[submarius.com/privacy](https://submarius.com/privacy) is the legal
+canonical version. The blog post
+[*your spots, your keys*](https://submarius.com/blog/your-spots-your-keys)
+walks through the design rationale.
+
+---
+
+<!-- Source: https://docs.submarius.com/features/pro-vs-free.html -->
+
+# Pro vs Free
+
+Submarius has a free tier and a paid Pro tier. The line between them is
+drawn deliberately: **safety features are free regardless of payment**;
+forecast depth and intelligence layers are Pro.
+
+## Free, forever
+
+These features are available to every user, with no time limit and no
+"upgrade to continue" prompts:
+
+- **SOS** with Plus Code rescue location
+- **Dive-buddy GPS sharing**
+- **OCEARCH tagged-shark proximity** alerts
+- **Crowd-sourced shark sightings**
+- **Tide predictions** for any coastal location
+- **Sun and moon times**
+- **The current marine forecast** (today and tomorrow)
+- **Today's water-clarity estimate** (with band)
+- **Today's GO/NO verdict**
+- **Spot library** (private, buddy-shared, or public-fuzzed) with
+  end-to-end encrypted backup
+- **Catch logging**
+- **Offline base map** (bathymetry + structure)
+- **Reefs and wrecks overlay**
+
+In other words: the safety net, the basic forecast, your personal data,
+and offline operation. The free tier is a complete usable product, not
+a teaser.
+
+## Pro
+
+Pricing: **$12.99/month**, **$99/year**, or **$149 lifetime** (current
+prices; check the app for live values).
+
+What you get on top of Free:
+
+- **7-day forecast** (vs today and tomorrow)
+- **Hourly granularity** for the full window
+- **Water-clarity forecast** for the full 7-day horizon, including
+  best-window detection ("best dive window this week: Saturday 9 AM–
+  noon, ~12 m visibility")
+- **Bite-score forecast** for the full horizon, per-species
+- **Animated precipitation radar** overlay
+- **Sea-surface temperature** overlay with thermocline detection
+- **Wind-particle** map
+- **HRRR short-range wind raster**
+- **Multi-spot trip planner**
+- **Push notifications** for verdict changes at saved spots
+- **Higher upload quota** for catch and viz reports
+
+Pro is the unit-economics-positive subscription that funds the data
+ingest pipelines (CoastWatch, GOES-16 ABI, USGS, OCEARCH, etc.) and the
+ongoing work on the model. The free tier is genuinely free, not
+loss-led — its scope is sized to be servable with the Pro revenue.
+
+## Why this split
+
+Three commitments, in order of priority:
+
+1. **Safety features must reach everyone.** A locked SOS button is
+   wrong, full stop. Same for buddy-GPS and shark proximity.
+2. **Today's reality should be visible to everyone.** If conditions are
+   dangerous *right now*, you shouldn't need a subscription to see
+   that. Today's verdict is free.
+3. **Forecast depth, time horizon, and intelligence layers are
+   Pro.** The 7-day clarity forecast is the active product — what
+   spearos pay for, what justifies the subscription. The free tier
+   doesn't include it.
+
+The split holds even when it costs us conversion. We've been asked to
+gate buddy-GPS or to limit SOS to one trigger per month. We won't.
+
+## Lifetime tier
+
+The $149 lifetime option exists for users who'd rather pay once than
+think about a recurring bill. It's a real lifetime — you keep Pro for
+as long as Submarius runs, with no future upsell. We may raise the
+lifetime price for new buyers as the product grows; existing lifetime
+users are grandfathered.
+
+## Cancellation
+
+Subscriptions are managed through the Apple App Store. Cancel anytime
+in Settings → Apple ID → Subscriptions. There's no in-app dark pattern
+to make cancellation hard.
+
+---
+
+<!-- Source: https://docs.submarius.com/methodology/water-clarity-model.html -->
+
+# Water-clarity model
+
+This page describes the model that produces every visibility number
+Submarius shows. The companion feature page is
+[features/water-clarity.md](../features/water-clarity.md).
+
+## Architecture in three layers
+
+```
+   Layer A — Day-1 physical model (always on)
+       ↓
+   Layer B — Crowd-sourced reports (calibrate + override)
+       ↓
+   Layer C — Per-region statistical refinement (as data accumulates)
+```
+
+The product **ships good on day one** — Layer A is engineered to be the
+best-possible baseline using established oceanography, before any user
+has submitted a single report. Layers B and C make it sharper over time
+without ever discarding the physical grounding.
+
+## Layer A — the physical model
+
+The model takes a query `(lat, lon, time)` and aggregates a set of
+physically-grounded sub-models, each returning a `(value, weight,
+reason)` triple. The final estimate is a weighted average; each
+contribution's pull is visible in the API response.
+
+### Inputs
+
+| Category | Signals |
+|---|---|
+| Atmospheric | Wind speed and direction (now / 24h max / 72h max), gust, wind direction 24h average, precipitation 24/48/72/168 h cumulative, air temperature |
+| Marine | Wave height + period + direction, swell height + period + direction, wind-wave height, sea-surface temperature, sea level + 24 h mean (for tide range) |
+| Tidal | Stage (rising / falling / slack), 24 h range, hours since last high/low, spring/neap state |
+| Lunar | Phase, illumination |
+| Hydrological (US) | Nearest river discharge, distance, turbidity, distance-weighted inflow index, 72 h discharge change |
+| Satellite | Kd490 from CoastWatch (VIIRS, multi-mission DINEOF, GOES-16 ABI fused), chlorophyll-a, age in hours, cloud flag |
+| HAB | Active flag, severity (0–3), distance to bloom centre |
+| Static / contextual | Distance to coast, bottom depth (GEBCO), latitude band, month, hour of day local, enclosed-water classification (open / semi-open / enclosed, derived from coastline geometry — *not* place names) |
+
+### Sub-models and weights
+
+Each component below is weighted; the relative weights are tuned against
+historical data. We don't publish the exact coefficients (they're
+ongoing model parameters that get retuned), but the structure is open.
+
+**Satellite Secchi from Kd490.** Apply the Lee 2015 mechanistic model
+(see [kd490-explained.md](kd490-explained.md)) with an adaptive Case-1
+vs Case-2 coefficient. Confidence decays with satellite age and is
+zeroed when the cloud flag is set.
+
+**Regional baseline.** A latitude-band × distance-from-coast lookup
+populated from published coastal-water clarity ranges. Always present
+as a low-weight prior — when satellite is fresh, it's overwhelmed by
+the satellite signal; when satellite is stale, it carries more weight.
+
+**Recent precipitation penalty.** Plumes scale with discharge and
+distance, with a 1–2 day lag (Tagus, Yukon, Ebro studies — see
+[water-clarity-research](../methodology/data-sources.md)). The penalty
+is heavier nearshore (within ~5 km of coast) and tapers off-shore.
+
+**Wind-history resuspension.** Based on Green & Coco (2014):
+turbidity in shallow water scales with W²/H (wind speed squared over
+water depth). Critical threshold around 19 knots over typical bottoms;
+72 h wind history matters because suspended sediment persists for
+24–72 h after wind subsides.
+
+**Tide-stage modifier.** Spot-type aware. In *enclosed* waters
+(bays, sounds, inlets), falling tide flushes sediment-laden water out
+(viz penalty) and rising tide pulls cleaner offshore water in (viz
+boost). In *open coast*, tide stage matters mostly only at slack. In
+*semi-open*, the effect is muted.
+
+**HAB bulletin override.** When NOAA publishes an active harmful-algal-
+bloom warning within 50 km, severity-weighted penalty applies and a
+user-visible warning is surfaced regardless of the rest of the score.
+
+**River-plume penalty (US).** For every USGS river within 50 km, the
+plume contribution is a function of discharge magnitude, distance
+(Gaussian decay, ~10 km characteristic length), and recent flood
+signal (72 h discharge change).
+
+**Algal-bloom climatology.** Where chlorophyll satellite data is
+unavailable, a seasonal climatology applies — temperate spring blooms,
+California upwelling-season (Feb–Jul) penalties.
+
+### Composition
+
+```
+estimate_m  = Σ(value_i × weight_i) / Σ(weight_i)
+disagreement = stdev(value_i) over components with weight > 0.05
+n_signals    = count of components with weight > 0.05
+coverage     = 1 + 2/n_signals       # fewer signals → wider band
+
+p50 = estimate_m
+p10 = estimate_m × 0.7  − disagreement × coverage
+p90 = estimate_m × 1.3  + disagreement × coverage
+```
+
+The width of the uncertainty band reflects (a) how much the components
+disagree among themselves and (b) how many components contributed at
+all. A confident estimate (satellite fresh, reports nearby, weather
+inputs available) has a tight band. A guess (satellite stale, no
+reports, sparse weather) has a wide one — and the app shows both.
+
+### Multi-satellite fusion
+
+Three independent satellite ocean-colour sources contribute to the
+Kd490 value used by the Lee equation:
+
+| Source | Resolution | Cadence | Latency |
+|---|---|---|---|
+| VIIRS-SNPP (NOAA CoastWatch L3) | 750 m / 4 km | Daily | 1–3 days |
+| VIIRS+OLCI multi-mission DINEOF | 2.32 km | Daily, gap-filled | 10–12 days |
+| GOES-16 ABI L1b → ACOLITE | 2 km | Hourly daylight | <30 s from publish |
+
+Fusion uses **inverse-variance weighting in log-Kd space** — the
+maximum-likelihood combination of independent Gaussian observations
+with known variances. The math is associative, so we cache the
+slow-changing ERDDAP fusion separately from the fast-moving GOES
+sample and re-fuse at query time.
+
+The geostationary GOES contribution is the rare ingredient: most
+single-sensor visibility products quote a number that's at minimum a
+day stale. GOES gives sub-daily freshness during cloud-free daytime
+hours, when ocean conditions can change fastest.
+
+### Bathymetric cap
+
+The model caps `p50 ≤ bottom_depth × 1.5` when the seafloor is
+shallower than the 122 m diver-relevance horizon. Beyond that depth,
+the cap is removed — pelagic queries (Bahamas deep, open Atlantic) can
+return the genuine 60–100 ft Gulf Stream visibility.
+
+### Adjacency / shore-bias correction
+
+Satellite ocean-colour retrievals within ~3 km of land suffer
+adjacency effects (land reflectance bleeds into the water-pixel signal,
+inflating apparent clarity) and bottom contamination (in shallow
+water, bottom reflectance distorts the colour). Both biases push the
+signal toward "clearer than reality".
+
+We downweight the satellite contribution at shore-adjacent points
+**only when Kd suggests clear water**. A satellite reading of high Kd
+near shore is honest about the local turbidity (turbidity dominates
+the bias). A reading of low Kd near shore is suspect (bias plus
+clear-water signal together), so we trust it less and lean more on the
+weather-driven and report-driven components.
+
+## Layer B — crowd-sourced reports
+
+Every dive trip in Submarius can end with a one-tap viz rating.
+Reports are H3-quantised before they leave the device — Submarius
+itself never receives precise dive-spot coordinates.
+
+Reports feed the model two ways:
+
+1. **Direct pinning.** A report less than 24 h old within ~5 km of a
+   query weights into the local estimate. The blend asymptotes at
+   ~85 % weight on reports when 5+ recent nearby reports exist; with
+   fewer, the physical model dominates.
+2. **Long-running calibration.** Accumulated reports recalibrate
+   regional coefficients over weeks-to-months horizons.
+
+## Layer C — statistical refinement
+
+In regions with sufficient report density, a quantile-regression
+gradient-boosted model trained on `(feature_vector, observed_viz)`
+pairs replaces or augments Layer A. The Lee equation and the physical
+penalties remain present — the statistical layer just refines the
+weighting.
+
+## Forecast horizon
+
+The same model runs forward in time, fed by forecasted feature vectors
+(Open-Meteo Marine 7-day forecast for wind/wave/precipitation,
+deterministic tides and lunar, persistence with mean-reversion for
+satellite Kd, USGS short-term forecasts where available).
+
+The uncertainty band widens with horizon because the underlying
+weather forecasts widen. **We don't hide this.** A Saturday-9am p50 of
+11 m means very different things if p10/p90 is 9–13 m versus 4–18 m,
+and the app shows the band, not just the median.
+
+## Best-window detection
+
+For each forecast horizon hour, the model computes p50 / p10 / p90.
+A "best window" is identified as the contiguous run of hours within
+the next 7 days where p50 is highest *and* the band is tight enough to
+be plannable. Surfaced as: *"Best dive window this week: Saturday
+9 AM – noon, ~12 m visibility."*
+
+This is the single most-used Pro feature.
+
+## Sentinel validation
+
+The model's output is captured every six hours at a small set of
+sentinel locations with known clarity ranges. Snapshots persist with
+full per-source breakdown. The system auto-flags:
+
+- p50 outside expected range for the location
+- p50 drift beyond a threshold versus prior snapshot, without an
+  upstream change to explain it
+- low confidence (broad uncertainty band) at a location that should be
+  well-constrained
+
+When a calibration regression slips through code review, sentinels
+catch it on the next 6 h cycle — before users complain.
+
+## Things we deliberately don't do (yet)
+
+- **Full Ensemble Kalman Filter (EnKF) state estimation.** Today the
+  model uses point-estimate fusion. EnKF would couple time history
+  more rigorously and improve performance during multi-day cloud
+  cover. Planned.
+- **Sub-cell resolution via Sentinel-2 (10 m).** Today our finest
+  native resolution is GOES at 2 km. Sentinel-2 opportunistic
+  processing for sub-kilometre features (jetty vs reef differences) is
+  planned.
+- **Per-region calibration of Kd→Secchi.** Today we use the published
+  Lee 2015 coefficient with the Case-1/Case-2 adjustment. Per-region
+  regression against in-situ data (where available) would tighten
+  uncertainty further.
+
+These aren't hidden — the next material change will land here when it
+ships. Until then, the model does what's described above.
+
+## See also
+
+- [features/water-clarity.md](../features/water-clarity.md) — what
+  users see
+- [methodology/kd490-explained.md](kd490-explained.md) — the optical
+  theory behind Kd → Secchi
+- [methodology/data-sources.md](data-sources.md) — full provider list
+  with citations
+- [methodology/data-honesty.md](data-honesty.md) — the principles that
+  shape the model's outputs
+
+---
+
+<!-- Source: https://docs.submarius.com/methodology/kd490-explained.html -->
+
+# Kd490 → Secchi: the optical theory
+
+This page explains the single relationship at the heart of the
+Submarius water-clarity model: the conversion from satellite-derived
+diffuse attenuation coefficient (Kd490) to Secchi disk depth (a proxy
+for "vertical visibility").
+
+## What's Kd490?
+
+The **diffuse attenuation coefficient at 490 nanometres** measures how
+much downwelling blue-green light is absorbed and scattered per metre
+of water column. Higher Kd = more attenuation = less light getting
+through = lower visibility.
+
+Units: m⁻¹ (per metre).
+
+Typical values:
+
+| Water type | Kd490 (m⁻¹) | Visual character |
+|---|---|---|
+| Open ocean (clear) | 0.02 – 0.05 | Deep blue, 30 m+ visibility |
+| Coastal blue water | 0.05 – 0.15 | Blue-green, 10–25 m visibility |
+| Coastal turbid | 0.15 – 0.5 | Green-grey, 3–10 m visibility |
+| Estuarine / river-plume | 0.5 – 5+ | Brown-green, < 3 m visibility |
+
+Satellites measure Kd490 by inverting the water-leaving radiance
+spectrum — essentially, by reading the colour of the water from above
+and modelling what attenuation would produce that colour.
+
+Submarius pulls Kd490 from three independent sources (VIIRS-SNPP,
+NOAA's VIIRS+OLCI multi-mission gap-filled product, GOES-16 ABI
+processed via ACOLITE) and fuses them via inverse-variance weighting
+in log-Kd space.
+
+## What's Secchi depth?
+
+The **Secchi disk** is a 30 cm white disk lowered into water until it
+disappears from view. The depth at which it disappears is the **Secchi
+depth (Z_SD)**. It's the oldest standardised measurement of water
+clarity and the one divers most intuitively recognise.
+
+Roughly: Secchi depth in metres ≈ vertical visibility a diver
+experiences. Horizontal visibility is typically 1.5–2× Secchi depth in
+clear water.
+
+## The classical "1.7/Kd" rule
+
+For decades the standard relationship was:
+
+> Z_SD ≈ 1.7 / Kd(490)
+
+This worked tolerably well for moderate-clarity coastal water but
+broke at the extremes — too pessimistic for very clear blue water,
+too optimistic for very turbid coastal/estuarine water.
+
+## The Lee 2015 mechanistic model
+
+[**Lee, Z. P. et al. (2015)** *Secchi disk depth: A new theory and
+mechanistic model for underwater visibility*, Remote Sensing of
+Environment 169, 139–149.](https://www.sciencedirect.com/science/article/pii/S0034425715300043)
+
+Lee derived a new equation based on contrast detection by the human
+eye at the **most transparent wavelength of the water type**, rather
+than fixed 490 nm. The simplified form:
+
+> Z_SD ≈ 1 / Kd_tr × ln(|r_t − r_w_pc| × R_d_pc / N_c_pc)
+
+where Kd_tr is Kd at the transparent-window wavelength (which shifts
+with water type — ~480 nm for clear blue ocean, ~550–580 nm for
+turbid coastal water).
+
+The logarithmic ratio is empirically nearly constant across diverse
+water types: **2.38 ± 0.03**.
+
+So the practical simplification:
+
+> **Z_SD ≈ 2.38 / Kd_tr**
+
+Validated against N = 338 globally distributed in-situ measurements
+spanning 1 m to 30 m+ visibility:
+
+> **R² = 0.96, ~18% mean absolute error.**
+
+This is the strongest published physical relationship between
+satellite-observable optical properties and human-perceived underwater
+visibility. It's the foundation Submarius builds on.
+
+## Wavelength shifts by water type
+
+The "transparent window" — the wavelength at which water absorbs and
+scatters light least — shifts with water composition. From Lee 2015
+Figure 4:
+
+| Z_SD | Transparent wavelength | Perceived water colour |
+|---|---|---|
+| 5 m | 540 nm | Green-yellow |
+| 10 m | 530 nm | Green |
+| 20 m | 510 nm | Blue-green |
+| 40 m | 480 nm | Blue |
+
+Practical implication: Kd at 490 nm (what the satellite measures most
+directly) is most accurate for clear water. For coastal or turbid
+water, Kd(490) underestimates the relevant attenuation, and a naive
+2.38/Kd(490) calculation will over-estimate visibility.
+
+This is why **Submarius uses an adaptive coefficient** — Case-1 vs
+Case-2 — rather than a fixed value.
+
+## Case-1 vs Case-2 water
+
+Oceanographers classify water into two broad optical types:
+
+- **Case-1** (open ocean, chlorophyll-dominated): the optical
+  properties are determined primarily by phytoplankton. Lee's
+  coefficient ≈ 2.38.
+- **Case-2** (coastal, dominated by suspended sediment, CDOM, and
+  river-borne material): the optical properties are dominated by
+  inorganic particles and dissolved organics, not phytoplankton. The
+  effective coefficient drops to ~1.5.
+
+Most published consumer-facing visibility products use 2.38 everywhere
+and silently overestimate coastal turbidity by 30–50%.
+
+Submarius computes a **case-2 factor** from:
+
+- Coastline-geometry enclosure class (open / semi-open / enclosed)
+- Distance to coast
+- Satellite chlorophyll-a (elevated → bloom-influenced → leans Case-2)
+- Active HAB flag
+- Freshwater detection from coastline data
+
+…then blends coefficients:
+
+```
+coeff = (1 − case2_factor) × 2.38 + case2_factor × 1.5
+Z_SD  = coeff / Kd
+```
+
+A Florida east-coast surf zone with Kd = 0.18 maps to Secchi ~8 m
+(realistic) instead of the ~12 m a Case-1-everywhere model would
+produce. The Bahamas deep with Kd = 0.04 maps correctly to ~60 m.
+
+## Where Kd490 falls short
+
+The relationship has known limits. We don't claim performance outside
+them:
+
+- **Optically shallow water.** When the seafloor is bright (sand, coral
+  rubble) and the water is shallow, satellite-observed colour is
+  contaminated by bottom reflectance. Kd retrievals there are biased.
+  Submarius corrects this with the bathymetric cap — see the model
+  page.
+- **Adjacency effects within ~3 km of land.** Land reflectance bleeds
+  into nearby water pixels, inflating apparent clarity. Submarius
+  downweights satellite Kd in shore-adjacent cells when Kd suggests
+  clear water (high-Kd readings are honest; low-Kd readings are
+  suspect).
+- **Severely turbid water (Kd > 1).** Both the linear approximation and
+  the Case-2 calibration weaken. Submarius reflects this in the
+  uncertainty band.
+- **Subsurface features.** Thermoclines, haloclines, and lensed plumes
+  are invisible to surface satellites. The model can't see them.
+
+## Citations and further reading
+
+- Lee, Z. P. et al. (2015). *Secchi disk depth: A new theory and
+  mechanistic model for underwater visibility.* Remote Sensing of
+  Environment 169, 139–149. [DOI](https://www.sciencedirect.com/science/article/pii/S0034425715300043)
+- IOCCG (2000). *Remote sensing of ocean colour in coastal, and other
+  optically-complex, waters.* Reports of the International
+  Ocean-Colour Coordinating Group, No. 3.
+- Mobley, C. (1994). *Light and Water: Radiative Transfer in Natural
+  Waters.* Academic Press. The textbook on the underlying physics.
+
+The Submarius blog post
+[*how Kd490 satellite data predicts water clarity*](https://submarius.com/blog/how-kd490-satellite-data-predicts-water-clarity)
+covers this material at lower technical density for a non-oceanographer
+audience.
+
+---
+
+<!-- Source: https://docs.submarius.com/methodology/bite-score-signals.html -->
+
+# Bite-score signals
+
+The user-facing
+[features/bite-score.md](../features/bite-score.md) describes what the
+bite score is. This page documents the signals that compose it and the
+literature behind each.
+
+We don't publish the exact numerical weights — those get retuned as
+data accumulates — but the structure and the per-signal logic is open.
+
+## Signal: solunar timing
+
+**What it captures.** Major and minor feeding periods derived from the
+moon's position: moon overhead, moon underfoot, moonrise, moonset.
+
+**Why it's in the model.** The solunar theory has a mixed academic
+record but a strong practitioner record. Pelagic predator activity
+spikes during major periods are well-documented across reef fish,
+billfish, and inshore species. The signal is not load-bearing on its
+own — it's one input among many — but ignoring it would be wrong.
+
+**How it's used.** Time-distance from the nearest major or minor
+period maps to a positive contribution that decays with hours from the
+period centre. Major periods contribute roughly twice the magnitude of
+minors.
+
+## Signal: barometric pressure trend
+
+**What it captures.** The 24-hour change in surface barometric
+pressure, in hectopascals.
+
+**Why it's in the model.** Falling pressure ahead of a weather change
+is the most-cited "feeding spike" condition in fishing literature.
+Stable high pressure suppresses activity in many species; rapidly
+rising pressure after a front is associated with a 12–24 h lull.
+
+**How it's used.** Pressure trend (24 h delta) maps to a contribution
+that's positive for falling pressure (ahead of a system), neutral for
+stable, and slightly negative for rapidly rising. The magnitude is
+species-modulated — gamefish respond more strongly than bottom species.
+
+## Signal: recent fronts
+
+**What it captures.** Cold-front passage in the last 48 hours.
+
+**Why it's in the model.** Cold fronts depress activity for ~6–24 h
+post-passage, then often produce a strong "rebound" 24–36 h later as
+fish resume feeding under the new stable pattern. The signal is partly
+redundant with the barometric trend but captures the specific
+post-front rebound timing better.
+
+**How it's used.** A binary "front passed in last X hours" combined
+with a continuous "hours-since" curve produces a contribution that's
+negative for the first 24 h post-front and positive in the 24–48 h
+window.
+
+## Signal: tide stage
+
+**What it captures.** Rising / falling / slack state, plus the rate of
+water-level change.
+
+**Why it's in the model.** Most species feed actively on moving
+water — bait gets displaced, predators ambush, currents concentrate
+forage. Slack tends to suppress activity. The relationship varies by
+species and habitat: redfish work the falling tide on flats; tarpon
+feed the incoming through inlets; bottom species have weaker tide
+preferences.
+
+**How it's used.** Per-species tide preference (encoded as a curve
+over the tide cycle) is multiplied by the rate of water-level change.
+Spring tides amplify the signal; neap tides damp it.
+
+## Signal: water temperature versus species preference
+
+**What it captures.** Current sea-surface temperature versus the
+target species' published preferred range.
+
+**Why it's in the model.** Warm-water species become lethargic in
+cold water and vice versa. Activity drops sharply outside the
+species-specific comfort band, and very sharply outside the survival
+band.
+
+**How it's used.** Distance between observed SST and the centre of the
+species preference range maps to a smooth penalty. Within the
+preference range, no penalty. Beyond it, an exponential drop-off to
+zero contribution.
+
+The species temperature ranges come from WoRMS (World Register of
+Marine Species) and FishBase, with hand-curation for species where
+those sources disagree.
+
+## Signal: species presence (seasonal range)
+
+**What it captures.** Whether the target species is plausibly present
+in the area at the current season, based on iNaturalist / OBIS
+observation density.
+
+**Why it's in the model.** A spectacular bite-score for a species that
+isn't in the area is a useless number. We treat species presence as a
+gating signal: if the seasonal range overlap is below a threshold, the
+score is suppressed and the app surfaces a "this species is
+unlikely-to-be-present here / now" note.
+
+**How it's used.** Presence is a multiplier on the rest of the score,
+not a separate additive contribution. If presence is near zero, the
+score collapses to near zero regardless of other signals.
+
+## Signal: time of day
+
+**What it captures.** Civil dawn, civil dusk, solar noon, midnight —
+plus the sun-altitude curve through the day.
+
+**Why it's in the model.** Most predatory species are crepuscular —
+peak feeding within an hour or two of sunrise and sunset. Some species
+(swordfish, certain pelagics) are night-feeders; others (mahi, dolphin)
+are mid-day surface predators.
+
+**How it's used.** A per-species diel-activity curve maps the current
+time-of-day to a contribution. The bite-score for sailfish at solar
+noon is structurally different from the bite-score for bonefish at
+solar noon.
+
+## Signal: wind and surface conditions
+
+**What it captures.** Wind speed, gust, wave height.
+
+**Why it's in the model.** Heavy chop suppresses surface and
+near-surface feeding. Some species (snook, redfish in the surf zone)
+actually feed *better* in moderate chop because bait is disoriented.
+
+**How it's used.** Per-species "preferred wind" curve, mostly
+penalising high wind, with some species-specific bumps for moderate
+chop.
+
+## What the model doesn't include (yet)
+
+Honest list of signals we know matter but haven't integrated:
+
+- **Forage abundance** — direct knowledge of where the bait is. We
+  approximate with seasonal climatology; we don't have real-time
+  data.
+- **Recent fishing pressure** — heavy pressure on a spot suppresses
+  activity for hours. Not modelled.
+- **Sub-surface temperature gradient** — many species hold at the
+  thermocline; surface SST is a poor proxy.
+- **Lunar perigee / apogee** — peripheral solunar signal; not
+  currently included.
+
+These gaps are honest, not hidden. As we get data, the model gets
+sharper.
+
+## The composition
+
+Once each signal computes its `(value, weight, reason)` triple, the
+final score is:
+
+```
+score = (Σ value_i × weight_i) / (Σ weight_i)   × presence_multiplier
+score = clamp(0, 10, score × 10)                 # scale to 0–10
+```
+
+Each contribution is visible in the breakdown. If you disagree with a
+weighting, the
+[methodology question template](https://github.com/Submarius/submarius/issues/new?template=methodology-question.yml)
+exists for that.
+
+---
+
+<!-- Source: https://docs.submarius.com/methodology/data-sources.html -->
+
+# Data sources and licences
+
+Submarius integrates public oceanographic and meteorological data. None
+of these providers are proprietary to us; we just consume them
+honestly, cache responsibly, and credit them visibly.
+
+If you're an upstream provider and you'd prefer different attribution
+or have rate-limit concerns, please contact us via the link on
+[submarius.com](https://submarius.com).
+
+---
+
+## Satellite ocean colour
+
+### NOAA CoastWatch ERDDAP
+
+- **What we use**: Diffuse attenuation coefficient at 490 nm (Kd490)
+  from VIIRS-SNPP daily L3 products, plus the multi-mission VIIRS+OLCI
+  DINEOF gap-filled product. Chlorophyll-a from the same providers.
+- **Portal**: https://coastwatch.noaa.gov/
+- **ERDDAP**: https://coastwatch.pfeg.noaa.gov/erddap/
+- **Resolution**: 750 m (regional sectors), 4 km (global)
+- **Latency**: 1–3 day lag for daily L3 products; 10–12 days for the
+  DINEOF gap-fill
+- **Licence**: NOAA data is in the public domain in the US. Attribution
+  appreciated.
+- **Notes**: We cache responses with TTLs aligned to the upstream
+  publication cadence. We don't hammer the API.
+
+### NOAA NODD on AWS — GOES-16 ABI L1b
+
+- **What we use**: Geostationary L1b radiance, processed via
+  [ACOLITE](https://github.com/acolite/acolite) for atmospheric
+  correction and ocean-colour extraction.
+- **Source**: NOAA Open Data Dissemination programme, S3 bucket
+  `noaa-goes16`.
+- **Resolution**: 2 km nadir (CONUS)
+- **Cadence**: hourly daylight, sub-30 second from publish
+- **Licence**: Public domain. Attribution to NOAA.
+- **Citation**: ACOLITE: Vanhellemont, Q. (2019). *Daily metre-scale
+  mapping of water turbidity using CubeSat imagery.* Optics Express
+  27(20), A1372–A1399.
+
+---
+
+## Atmosphere and marine forecast
+
+### Open-Meteo
+
+- **What we use**: Marine forecast (wind, swell, wave, SST), forecast
+  weather (precipitation, temperature, pressure), and historical
+  weather (precipitation history for the clarity model).
+- **Portal**: https://open-meteo.com/
+- **Licence**: CC BY 4.0 — attribution required.
+- **Attribution**: "Weather data by Open-Meteo.com" surfaced on
+  conditions detail screens.
+
+### NOAA NDFD (National Digital Forecast Database)
+
+- **What we use**: Short-range surface wind and marine forecast for
+  the verdict computation.
+- **Portal**: https://www.weather.gov/mdl/ndfd_home
+- **Licence**: Public domain.
+
+### NOAA HRRR (High-Resolution Rapid Refresh)
+
+- **What we use**: 3 km surface wind raster for the wind-particle
+  overlay (Pro feature).
+- **Portal**: https://rapidrefresh.noaa.gov/hrrr/
+- **Licence**: Public domain.
+
+---
+
+## Tides, currents, sea level
+
+### NOAA Tides & Currents
+
+- **What we use**: Tide predictions, current predictions, observed
+  water level, harmonic constants.
+- **Portal**: https://tidesandcurrents.noaa.gov/
+- **API**: https://api.tidesandcurrents.noaa.gov/api/prod/
+- **Licence**: Public domain.
+- **Coverage**: US coastal (CONUS, Alaska, Hawaii, territories).
+
+For non-US locations we fall back to global tidal modelling via
+Open-Meteo Marine.
+
+---
+
+## Sea-surface temperature overlay
+
+### NASA GIBS — GHRSST L4
+
+- **What we use**: Daily SST raster for the map overlay (Pro feature).
+- **Portal**: https://gibs.earthdata.nasa.gov/
+- **Licence**: Public domain. Attribution to NASA EOSDIS GIBS.
+
+---
+
+## Harmful algal blooms
+
+### NOAA Gulf Coast HAB Forecast
+
+- **What we use**: Active HAB flags, severity (0–3), and bloom centre
+  positions for the clarity-model penalty and the user-visible
+  warning.
+- **Portal**: https://coastalscience.noaa.gov/science-areas/habs/hab-forecasts/gulf-coast/
+- **Licence**: Public domain.
+- **Coverage**: Gulf of Mexico, Florida east coast.
+
+---
+
+## Hydrology
+
+### USGS Water Services
+
+- **What we use**: Real-time river discharge (parameter 00060), gauge
+  height (00065), and turbidity (63680) for the river-plume penalty
+  in the clarity model.
+- **API**: https://waterservices.usgs.gov/docs/instantaneous-values/
+- **Licence**: Public domain.
+- **Rate limit**: 50 req/h without API key, 1000 req/h with key.
+- **Coverage**: US-only.
+
+---
+
+## Bathymetry
+
+### GEBCO (General Bathymetric Chart of the Oceans)
+
+- **What we use**: Global bathymetric grid, used for the depth cap on
+  the clarity estimate and for the bathymetry overlay.
+- **Portal**: https://www.gebco.net/
+- **Licence**: GEBCO 2024 grid is freely available; users are asked
+  to credit GEBCO.
+
+### ESRI World Ocean Base
+
+- **What we use**: Bathymetry tile overlay for the map.
+- **Portal**: https://www.arcgis.com/home/item.html?id=1e126e7520f9466c9ca28b8f28b5e500
+- **Licence**: Used per ESRI's terms of use (free for non-commercial
+  embedded use; we proxy and cache to stay under their fair-use
+  guidance).
+
+---
+
+## Cartography
+
+### OpenStreetMap
+
+- **What we use**: Coastlines, marine features (reefs, wrecks,
+  harbours, channel markers), nautical-relevant POIs.
+- **Portal**: https://www.openstreetmap.org/
+- **Licence**: ODbL — attribution required and database-share-alike.
+- **Attribution**: "© OpenStreetMap contributors" surfaced on the
+  base map.
+
+### NOAA ENC (Electronic Navigational Charts)
+
+- **What we use**: US nautical chart features (channels,
+  obstructions, depth contours).
+- **Portal**: https://nauticalcharts.noaa.gov/charts/noaa-enc.html
+- **Licence**: Public domain.
+
+### Marine Regions
+
+- **What we use**: Maritime boundaries (EEZ, territorial waters).
+- **Portal**: https://www.marineregions.org/
+- **Licence**: CC BY 4.0.
+
+### Protected Planet
+
+- **What we use**: Marine Protected Area boundaries.
+- **Portal**: https://www.protectedplanet.net/
+- **Licence**: Open data; attribution to UNEP-WCMC and IUCN required.
+
+---
+
+## Marine biology
+
+### iNaturalist
+
+- **What we use**: Crowd-sourced species observations for the fish-ID
+  tile grid (location-filtered species presence).
+- **Portal**: https://www.inaturalist.org/
+- **Licence**: Per-observation; we use only CC0 / CC BY / CC BY-NC
+  observations.
+
+### OBIS (Ocean Biodiversity Information System)
+
+- **What we use**: Authoritative species occurrence records for
+  seasonal range modelling.
+- **Portal**: https://obis.org/
+- **Licence**: CC BY 4.0.
+
+### WoRMS (World Register of Marine Species)
+
+- **What we use**: Species taxonomy, biology, habitat.
+- **Portal**: https://www.marinespecies.org/
+- **Licence**: CC BY 4.0.
+- **Cache TTL**: 30 days (taxonomy doesn't change often).
+
+---
+
+## Shark tracking
+
+### OCEARCH
+
+- **What we use**: Tagged-shark position pings.
+- **Portal**: https://www.ocearch.org/
+- **Licence**: Per OCEARCH's data sharing terms; we cache and surface
+  positions with attribution.
+
+---
+
+## Reverse geocoding
+
+### Public Nominatim (OSM)
+
+- **What we use**: Reverse geocoding of lat/lon to nearby place names
+  (display only; never used as a model input — see the
+  [data-honesty page](data-honesty.md) for why).
+- **Portal**: https://nominatim.org/
+- **Licence**: ODbL via OpenStreetMap.
+
+---
+
+## Submarius-internal
+
+The following are computed in-house, not pulled from a third party:
+
+- **Astronomical** — sun, moon, solunar, twilight times. Computed via
+  standard astronomical formulae (Meeus); no external API.
+- **Reefs and wrecks structure overlay** — built from OSM features
+  plus per-state datasets where they exist.
+- **Activity-rated verdicts** (clarity, bite, GO/NO) — composed in our
+  own backend from the inputs above.
+
+## Attribution policy
+
+Submarius surfaces the active data providers in two places:
+
+1. **Per-feature, in the conditions detail view.** When you tap into
+   the water-clarity breakdown, every contributing source is listed.
+2. **In the app's About / credits page.** All providers above are
+   listed with their licence terms.
+
+If you're a provider and want different wording or different placement,
+get in touch.
+
+---
+
+<!-- Source: https://docs.submarius.com/methodology/data-honesty.html -->
+
+# Data-honesty principles
+
+Submarius operates under three principles that show up in the source
+code, the model, the API responses, and the user-facing copy. They are
+load-bearing — they shape what the product is willing to say and what
+it refuses to fake.
+
+## 1. Never claim what we don't measure
+
+If the model isn't actually computing something from real data, the app
+doesn't display a number for it. There is no fake confidence, no
+placeholder text that reads as a forecast, no "looks good!" copy that
+isn't backed by signal.
+
+Concretely:
+
+- Where satellite coverage is too stale to anchor the clarity model,
+  the app surfaces *"insufficient recent data"* — not a guess.
+- Where the verdict's required inputs aren't all present, the verdict
+  is suppressed entirely rather than computed on a partial set.
+- The water-clarity uncertainty band reflects the actual disagreement
+  among the sub-models. When the band is wide, the app *shows it
+  wide*. We do not artificially narrow the band to look more
+  confident.
+- The bite score collapses toward zero when the target species is
+  unlikely to be present at the season and location. We don't quote a
+  high score for a species that isn't there.
+
+The discipline is unglamorous — every product team is tempted to fill
+empty space with confident-sounding output — but trust is the
+product. A wrong "GO" verdict that turns out to be 1 m visibility is a
+worse user experience than no verdict at all.
+
+## 2. No hardcoded jurisdiction-specific data
+
+Submarius does not ship lookup tables of "Florida = clear, New Jersey
+= murky". It does not bake state-by-state lists of species, regions,
+or thresholds into the code or the copy.
+
+Why:
+
+- Hardcoded jurisdiction data is a maintenance time bomb. It rots the
+  moment a regulation changes, a coastline shifts, or a season moves.
+- It implies coverage we don't have. A code-baked list of "supported
+  states" tells the user we know something authoritative about each;
+  in practice we know whatever the public oceanographic data tells
+  us, which generalises across coastlines.
+- It encodes assumptions that don't generalise. Coastline geometry,
+  bathymetry, and oceanographic inputs *do* generalise — the model
+  works the same way in Florida and the Adriatic.
+
+When the model needs to classify a location (e.g. "is this an
+enclosed bay or an open coast?"), the classification comes from
+**coastline geometry analysis** (offshore distance, shelter angle,
+adjacent water cover), not from a list of named places. Same for
+seasonal climatology — driven by latitude band and date, not a list of
+"warm states".
+
+The single exception is **regulations data** — fishing size and bag
+limits per jurisdiction — which is genuinely per-jurisdiction and is
+shipped as a structured YAML file with a clearly-dated last-update
+field. When that file is stale, the app surfaces the date and tells
+the user to verify with local authority.
+
+## 3. Safety features are permanently free
+
+Three features bypass the entitlement middleware regardless of
+subscription tier and remain available to every user:
+
+- **SOS** (with Plus Code rescue location)
+- **Dive-buddy GPS sharing**
+- **OCEARCH tagged-shark proximity** and crowd-sourced shark sightings
+
+This is permanent product policy, not a free-trial. The reasoning is
+covered on [features/safety.md](../features/safety.md) and
+[features/pro-vs-free.md](../features/pro-vs-free.md).
+
+## How these show up in the API
+
+The Submarius public conditions API returns, for every clarity query:
+
+- The estimate (`p50`)
+- The uncertainty band (`p10`, `p90`)
+- The list of contributing factors with each one's value, weight, and
+  a plain-language reason
+- The age and source of each satellite contribution
+- A `data_status` field that flags `insufficient_satellite_coverage`,
+  `insufficient_baseline`, `bathymetry_unavailable`, etc., when any
+  required input is missing
+
+Anyone building on the API can verify the principles above by
+inspecting the response. There is no hidden state; the model's
+reasoning is on the wire.
+
+## Things you might expect that we don't do
+
+Some product practices we've explicitly declined:
+
+- **No "personalised" forecasts based on past behaviour.** The model
+  is the model; it doesn't quietly nudge results based on what you've
+  liked.
+- **No A/B testing of safety messaging.** Safety copy is deterministic
+  across all users.
+- **No engagement-loop dark patterns.** No "streak", no "you haven't
+  logged in for 3 days!", no manufactured urgency. The app should be
+  useful when you need it and invisible when you don't.
+- **No selling user data.** The privacy posture is on
+  [features/privacy.md](../features/privacy.md).
+- **No location tracking outside an active dive trip.** Background
+  location is not used for product analytics.
+
+## Where this came from
+
+These principles aren't aspirational — they're enforced by code review
+and live in the product's architecture decisions. The water-clarity
+model spec encodes the *"never claim what we don't measure"* rule in
+the data-status path; the entitlement middleware encodes the
+*safety-permanently-free* rule in the access-control path; the
+classification subsystem encodes the *no-hardcoded-jurisdiction-data*
+rule by computing classifications from coastline geometry rather than
+from a list of named places.
+
+The three rules survive feature work because they have to. Without
+them Submarius would be just another marine app guessing at what
+might happen.
+
+---
+
+<!-- Source: https://docs.submarius.com/platforms/ios.html -->
+
+# iOS app
+
+## Install
+
+[Download Submarius on the App Store.](https://apps.apple.com/app/submarius)
+
+The web app at [submarius.com](https://submarius.com) works in Mobile
+Safari and supports "Add to Home Screen" as a progressive web app, but
+the native iOS build offers tighter integration: better background
+behaviour, native widgets (planned), and lower battery cost during
+buddy-GPS sessions.
+
+## Requirements
+
+- iOS 16.0 or later
+- iPhone (iPad supported but not yet optimised; iPad-specific layouts
+  are on the roadmap)
+- Cellular or wifi for live data; the app degrades gracefully offline
+  (see [features/offline-mode.md](../features/offline-mode.md))
+- Location permissions for "While Using" — the app does not request
+  background location except during an active buddy-GPS session
+
+## What's iOS-specific
+
+- **Push notifications** — verdict-change alerts at saved spots,
+  shark-proximity alerts, buddy-GPS pairing requests
+- **Native share sheet** — share a spot, a verdict, or a viz report
+  via iMessage, Mail, or any installed share target
+- **HealthKit dive logging** (planned) — write dive entries from the
+  catch-log to Apple Health so they appear alongside Activity data
+- **App Clip** for the public viz-report submission flow (no install
+  required)
+- **Lockscreen widgets** (planned) — today's verdict at a saved spot
+
+## Privacy on iOS
+
+Submarius's privacy posture is platform-agnostic, but iOS surfaces it
+via the standard mechanisms:
+
+- App Privacy label discloses the categories of data collected
+  (account info, optional location during dive trips, anonymised usage)
+- Location is requested as "While Using" only; background location is
+  used solely for active buddy-GPS sessions and stops when the trip
+  ends
+- App Tracking Transparency: we don't track you across other apps and
+  websites; we don't display the ATT prompt because we don't need it.
+
+## Subscription management
+
+Subscriptions (Pro monthly, yearly, lifetime) are managed through the
+Apple App Store.
+
+- Subscribe in-app via the standard StoreKit flow
+- Restore purchases from Settings → Account → Restore
+- Cancel anytime in **iOS Settings → Apple ID → Subscriptions**
+
+## Bug reports from iOS
+
+If you hit a bug, please file using the
+[bug template](https://github.com/Submarius/submarius/issues/new?template=bug.yml).
+Include the app version (Settings → About in-app) and the iOS
+version. Attach screenshots if you can — please redact any precise
+location data.
+
+---
+
+<!-- Source: https://docs.submarius.com/platforms/web.html -->
+
+# Web app
+
+[submarius.com](https://submarius.com) is the web version of Submarius.
+It's a full-featured progressive web app — every feature from the iOS
+build is available, with the browser-specific caveats below.
+
+## Browser support
+
+- **Chrome / Edge / Brave** (Chromium-based) — full support, current
+  version
+- **Safari** (macOS and iOS) — full support, current version
+- **Firefox** — full support, current version
+- **Older browsers** — degrades. Map rendering may fall back to a
+  raster tile path; some Pro overlays may be disabled.
+
+The minimum target is "browsers shipped in the last 18 months". We
+don't support IE, Edge Legacy, or pre-2023 Safari.
+
+## Install as a PWA
+
+The web app supports the standard PWA install prompt. On Mobile Safari
+use **Share → Add to Home Screen**; on Chrome use the install icon in
+the address bar. Once installed, the app launches full-screen with no
+browser chrome and behaves close to a native app — the offline base
+map, cached conditions, and queued mutations all work.
+
+## Web-specific differences from iOS
+
+- **Push notifications** — supported on Chrome and the modern Web Push
+  flow; supported on iOS Safari 16.4+ as part of the standard. Older
+  versions don't support web push.
+- **Background location** — limited; web apps lose location access
+  when not in the foreground tab. Buddy-GPS sessions on web work
+  while the tab is active and slow when the tab backgrounds.
+- **App Store payments** — the web app uses a non-Apple payment
+  processor for Pro subscriptions; the iOS app uses StoreKit. Pro
+  subscriptions are interchangeable — purchase on web and the
+  benefits unlock on iOS via the same account, and vice versa.
+- **HealthKit / Garmin native integrations** — not available on web.
+
+## Offline on web
+
+The PWA supports an installable offline pack via the same mechanism as
+iOS — Dexie (IndexedDB) for tile and conditions storage, with a
+Service Worker handling cache-first delivery. See
+[features/offline-mode.md](../features/offline-mode.md) for what works
+and what doesn't.
+
+## Privacy on web
+
+Same posture as iOS — see [features/privacy.md](../features/privacy.md).
+Browser specifics:
+
+- We don't use third-party analytics (no Google Analytics, no Segment,
+  no Mixpanel). Anonymous first-party usage logging only.
+- We don't run ad SDKs.
+- We use one-time, single-purpose cookies for session and CSRF; no
+  cross-site tracking cookies.
+
+## Bug reports from web
+
+[Bug template](https://github.com/Submarius/submarius/issues/new?template=bug.yml).
+Include browser, browser version, OS, and a screenshot if possible —
+again, please redact location markers.
+
+---
+
+<!-- Source: https://docs.submarius.com/press/press-kit.html -->
+
+# Press kit
+
+Everything in this page is free to use under
+[CC BY 4.0](../../LICENSE) with attribution to Submarius.
+
+For interview requests, fact-checking, or anything not covered here,
+use the contact link on [submarius.com](https://submarius.com).
+
+## Boilerplate (one paragraph)
+
+> Submarius is a mobile-first ocean-conditions app that gives spearos,
+> divers, anglers, and boaters a single GO / NO / CAUTION verdict per
+> day instead of forcing them to integrate ten dashboards themselves.
+> The product is built around a physically-grounded water-clarity
+> forecast — the only consumer app that fuses three independent
+> satellite ocean-colour sources (VIIRS, GOES-16 ABI, multi-mission
+> DINEOF) and converts them to underwater visibility via the published
+> Lee 2015 mechanistic model. Submarius runs as a native iOS app and
+> as a progressive web app at submarius.com. Safety features (SOS with
+> Plus Code rescue location, dive-buddy GPS sharing, OCEARCH
+> tagged-shark alerts) are permanently free regardless of subscription
+> tier.
+
+## Boilerplate (one sentence)
+
+> Submarius is the marine-conditions app that tells you when to go,
+> with a physically-grounded water-clarity forecast and permanently
+> free safety features.
+
+## Boilerplate (tagline)
+
+> A verdict, not a dashboard.
+
+## Logos and brand assets
+
+Located in [`assets/brand/`](../../assets/brand/) at the repository
+root:
+
+- `icon-512.png` — App icon, 512×512 PNG
+- `icon-192.png` — App icon, 192×192 PNG
+- `apple-touch-icon.png` — iOS-style rounded icon
+- `feature-graphic.png` — Banner graphic
+- `og-default.png` — Open Graph card (1200×630)
+- `submarius.avif` — Brand image
+- `favicon-96.png` — Favicon, 96×96 PNG
+
+Use of the Submarius name and logo for editorial purposes (news
+articles, reviews, podcast cover art, etc.) is permitted without
+prior approval. Use of the name or logo to imply endorsement,
+partnership, or affiliation requires written permission.
+
+## Screenshots
+
+Product screenshots will be added to [`assets/screenshots/`](../../assets/screenshots/)
+as the screenshot review settles.
+
+For up-to-date App Store imagery, see the
+[App Store listing](https://apps.apple.com/app/submarius).
+
+## Quick facts
+
+| | |
+|---|---|
+| **Product** | Submarius |
+| **Category** | Marine conditions, water-clarity forecast, dive planning, fishing intelligence |
+| **Platforms** | iOS (native), Web (PWA) |
+| **Coverage** | Global (with US-specific signals — USGS rivers, NOAA HAB, NOAA Tides — adding precision in the US) |
+| **Pricing** | Free tier with all safety features. Pro: $12.99/mo, $99/yr, $149 lifetime |
+| **Launched** | 2026 |
+| **Founded by** | Independent founder; not venture-backed |
+| **Website** | https://submarius.com |
+| **Docs / methodology** | https://github.com/Submarius/submarius |
+
+## What's distinctive
+
+If you're writing about Submarius, the things that genuinely
+differentiate the product:
+
+1. **Multi-satellite ocean-colour fusion** with the inverse-variance
+   maths to back the uncertainty bands. No other consumer marine app
+   fuses three independent sensors.
+2. **Hourly geostationary clarity updates** via GOES-16 ABI processed
+   through ACOLITE. Most clarity products are minimum 1-day stale.
+3. **Adaptive Case-1 / Case-2 coefficient** in the Kd → Secchi
+   conversion. Most products use 2.38 everywhere and silently
+   overestimate coastal turbidity.
+4. **Honest uncertainty bands.** The width of the band reflects actual
+   model confidence; we don't artificially narrow it to look more
+   confident.
+5. **Bathymetric cap.** A 4 m bottom doesn't get a 25 m visibility
+   estimate, regardless of what the satellite says about the surface.
+6. **Permanently free safety features.** SOS, buddy-GPS, OCEARCH
+   tagged-shark proximity, crowd-sourced sightings — never gated.
+7. **Privacy-by-engineering.** User dive spots are H3-quantised on
+   device before leaving; even Submarius can't recover precise
+   coordinates of fuzzed spots.
+8. **No black-box AI.** Every number in the app is composed from
+   visible signals. Tap the verdict, see the breakdown; tap a signal,
+   see its source.
+
+## Suggested questions for an interview
+
+- *Why build verdict-first instead of dashboard-first?*
+- *How did you settle on Lee 2015 as the foundation?*
+- *Why are safety features permanently free, even when free users
+  cost you money?*
+- *What's the data-honesty principle and where did it come from?*
+- *What's the biggest single misconception about marine forecasting?*
+- *What does the model do when it doesn't know?*
+
+## What we won't do for press
+
+- Custom screenshots that depict false data
+- Endorsements or "Submarius approves of [other product]"
+- Speaking on behalf of users we don't represent
+- Comments on competitor products beyond the published comparison
+  pages on submarius.com
+
+## Contact
+
+Use the contact link on [submarius.com](https://submarius.com).
+Response time: 24–48 hours for press inquiries.
+
+---
+
+<!-- Source: https://docs.submarius.com/press/coverage.html -->
+
+# Press coverage
+
+A running log of where Submarius has been mentioned, reviewed, or
+covered by independent media. Updated as new coverage appears.
+
+If we missed your piece, please [open an issue](https://github.com/Submarius/submarius/issues)
+or email us via the contact link on [submarius.com](https://submarius.com).
+
+## Format
+
+Each entry: **date** — **publication** — *headline / link* — short
+characterisation.
+
+---
+
+## 2026
+
+*No coverage logged yet. Submarius launched in 2026; this page will
+populate as press appears.*
+
+---
+
+## How we treat coverage
+
+- **Listed regardless of slant.** Critical reviews, mixed reviews, and
+  glowing reviews all get listed. The point of this page is to be a
+  navigation aid, not a marketing surface.
+- **Linked to the original publication**, not to a syndicated copy or
+  an aggregator.
+- **Excerpted briefly** so the reader can decide whether to click. We
+  don't republish full articles.
+- **Removed only on request** from the original publication, never on
+  request from us when the coverage was unfavourable.
+
+## How to cover Submarius
+
+The [press kit](press-kit.md) has logos, boilerplate, screenshots,
+and quick facts. Free to use under CC BY 4.0.
+
+For interviews, fact-checking, or anything bespoke, the contact link
+on [submarius.com](https://submarius.com) is the fastest route.
