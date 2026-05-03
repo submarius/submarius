@@ -1,0 +1,50 @@
+# Submarius
+
+> The only ocean-conditions app that tells you when to go. Real water-clarity forecasts, honest bite scores, and a single GO/NO verdict per dive day — for spearos, divers, anglers, and boaters.
+
+Submarius aggregates NOAA marine forecasts, Open-Meteo, USGS river-discharge data, and NOAA CoastWatch Kd490 satellite turbidity into a transparent, physically-grounded model. Every factor is tappable for its full reasoning — no black-box AI claims. Safety features (OCEARCH tagged-shark alerts, SOS, buddy GPS) are permanently free regardless of subscription tier. Pro is $12.99/mo, $99/yr, or $149 lifetime.
+
+## Core product
+
+- [Home](https://submarius.com/): What Submarius is and how the verdict works
+- [Spearfishing app](https://submarius.com/spearfishing-app): Conditions, water clarity, and verdict for spearos and freedivers
+- [Fishing app](https://submarius.com/fishing-app): Bite score, tides, and 8-day marine forecast for anglers
+- [Water clarity forecast explained](https://submarius.com/clarity): How the Submarius clarity model works — Kd490 satellite turbidity, river-plume detection, wave-mixing physics, post-dive viz reports
+- [Bite score explained](https://submarius.com/bite-score): What the 0–10 number means, the signals it uses, why most other bite scores are wrong
+
+## Comparisons
+
+- [Submarius vs Fishbrain](https://submarius.com/vs/fishbrain): Verdict-first decision app vs catch-logging database
+- [Submarius vs Windy](https://submarius.com/vs/windy): Marine-specific verdict vs general weather visualization
+- [Submarius vs Surfline](https://submarius.com/vs/surfline): Forecast verdict + permanently-free safety features vs cam network
+- [Submarius vs Navionics](https://submarius.com/vs/navionics): Conditions intelligence vs nautical charts
+- [Submarius vs FishTrack](https://submarius.com/vs/fishtrack): Coastal verdict vs offshore SST charts
+
+## Field guides and explainers
+
+- [How to predict water visibility for diving and spearfishing](https://submarius.com/blog/how-to-predict-water-visibility): The mental model spearos already run, explained with the actual signals
+- [How Kd490 satellite data predicts water clarity](https://submarius.com/blog/how-kd490-satellite-data-predicts-water-clarity): The oceanography behind the forecast (Lee 2015 R²=0.96)
+- [A verdict, not a dashboard](https://submarius.com/blog/a-verdict-not-a-dashboard): The product philosophy — why we surface one number instead of ten
+- [Your spots, your keys](https://submarius.com/blog/your-spots-your-keys): How spot privacy and end-to-end-encrypted backup work
+- [Blog index](https://submarius.com/blog): All long-form writing
+
+## Activity hubs
+
+- [Spearfishing locations](https://submarius.com/spearfishing/): All coastal spearfishing destinations Submarius covers
+- [Fishing locations](https://submarius.com/fishing/): All coastal fishing destinations
+- [Diving locations](https://submarius.com/diving/): All scuba and freediving destinations
+- [Surfing locations](https://submarius.com/surfing/): All surfing destinations
+- [Miami hub](https://submarius.com/miami): Local Miami conditions, reefs, wrecks, and seasonal species
+
+## Weekly water clarity reports
+
+- [Reports index](https://submarius.com/reports/): All published weekly reports — regional reads of US coastal water clarity from the Submarius forecast model
+- [RSS feed](https://submarius.com/reports/feed.xml): Subscribe to new weekly reports
+- [Reports sitemap](https://submarius.com/sitemap-reports.xml): Per-report URL index
+
+## Optional
+
+- [Sitemap](https://submarius.com/sitemap.xml): Full URL index for crawlers
+- [Privacy policy](https://submarius.com/privacy)
+- [Terms of service](https://submarius.com/terms)
+- [Support](https://submarius.com/support)

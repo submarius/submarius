@@ -1,0 +1,70 @@
+name: Bug report
+description: Something in the Submarius app or web is broken or wrong.
+title: "[Bug] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug. The more specific you are,
+        the faster we can fix it.
+
+        For security vulnerabilities, please **don't file here** — see
+        [SECURITY.md](https://github.com/Submarius/submarius/blob/main/SECURITY.md)
+        for the private disclosure process.
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - iOS app
+        - Web app (submarius.com)
+        - Both
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: App version / browser
+      description: For iOS, in the app go to Settings → About. For web, your browser and OS.
+      placeholder: "iOS 18.4 / Submarius build 142"
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the issue.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the app
+        2. Tap …
+        3. See …
+
+  - type: input
+    id: location
+    attributes:
+      label: Location involved (optional)
+      description: If the bug is location-specific (a wrong forecast, a missing data layer), the rough region helps. Don't include precise coordinates of personal dive spots.
+      placeholder: "Florida Keys, near Marathon"
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Drag-and-drop welcome. Please redact location markers and personal data.

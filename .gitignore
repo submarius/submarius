@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Jekyll (GitHub Pages build output, when running locally)
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+
+# Node, in case any tooling lands later
+node_modules/
+npm-debug.log*
+
+# Build output for any future static-site build step
+dist/
+build/

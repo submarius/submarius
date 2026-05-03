@@ -1,0 +1,52 @@
+name: Methodology question
+description: Ask about how the water-clarity model, bite score, or any other Submarius number is computed.
+title: "[Methodology] "
+labels: ["methodology", "discussion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Public Q&A on the model is genuinely useful — better that an answer
+        is searchable than buried in email. Open a thread here, or use
+        [Discussions](https://github.com/Submarius/submarius/discussions)
+        for more open-ended conversation.
+
+        Before opening, please skim the relevant page in
+        [docs/methodology/](https://github.com/Submarius/submarius/tree/main/docs/methodology).
+
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic
+      options:
+        - Water clarity / visibility forecast
+        - Bite score
+        - Tides and currents
+        - GO/NO verdict logic
+        - Shark alerts (OCEARCH)
+        - Data sources / providers
+        - Coverage / regional behaviour
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: The question
+      description: What you'd like clarified.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context (optional)
+      description: A specific case that prompted the question — region, conditions, what the model said versus what you observed. The more concrete, the better the answer.
+
+  - type: input
+    id: source-checked
+    attributes:
+      label: Did you check the docs first?
+      description: Which page, if any, you read before asking. (No judgement either way; this just helps us improve the docs.)
+      placeholder: "docs/methodology/water-clarity-model.md, didn't see this case covered"

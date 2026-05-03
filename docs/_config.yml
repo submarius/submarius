@@ -1,0 +1,38 @@
+title: "Submarius — public documentation"
+description: "Methodology, feature explainers, data-source citations, and FAQ for Submarius — the marine-conditions app for spearos, divers, anglers, and boaters."
+url: "https://docs.submarius.com"
+baseurl: ""
+
+theme: jekyll-theme-cayman
+
+# SEO + structured data
+author: "Submarius"
+twitter:
+  card: summary_large_image
+social:
+  name: Submarius
+  links:
+    - https://submarius.com
+    - https://github.com/Submarius/submarius
+
+# Preserve existing markdown rendering
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+include:
+  - llms.txt
+
+exclude:
+  - README.md
+  - CONTRIBUTING.md
+  - SECURITY.md
+  - CODE_OF_CONDUCT.md
+  - LICENSE
+  - .gitignore
